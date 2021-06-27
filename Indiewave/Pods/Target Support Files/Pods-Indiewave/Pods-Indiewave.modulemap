@@ -1,0 +1,6 @@
+framework module Pods_Indiewave {
+  umbrella header "Pods-Indiewave-umbrella.h"
+
+  export *
+  module * { export * }
+}
