@@ -3,112 +3,109 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D4402A4268937F300A184E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D4402A3268937F300A184E1 /* GoogleService-Info.plist */; };
-		1DF7485826892D1C003C883F /* IndiewaveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7485726892D1C003C883F /* IndiewaveApp.swift */; };
-		1DF7485A26892D1C003C883F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7485926892D1C003C883F /* ContentView.swift */; };
-		1DF7485C26892D1C003C883F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7485B26892D1C003C883F /* Assets.xcassets */; };
-		1DF7485F26892D1C003C883F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7485E26892D1C003C883F /* Preview Assets.xcassets */; };
-		419819867F23460A58515D54 /* Pods_Indiewave.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE3FBA94F938E3FDF393071 /* Pods_Indiewave.framework */; };
+		1DF92817268A434B004E9D4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF92816268A434B004E9D4E /* AppDelegate.swift */; };
+		1DF92819268A434B004E9D4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF92818268A434B004E9D4E /* SceneDelegate.swift */; };
+		1DF9281B268A434B004E9D4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9281A268A434B004E9D4E /* ViewController.swift */; };
+		1DF9281E268A434B004E9D4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF9281C268A434B004E9D4E /* Main.storyboard */; };
+		1DF92820268A434C004E9D4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DF9281F268A434C004E9D4E /* Assets.xcassets */; };
+		1DF92823268A434C004E9D4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF92821268A434C004E9D4E /* LaunchScreen.storyboard */; };
+		1DF9282D268A528D004E9D4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DF9282C268A528D004E9D4E /* GoogleService-Info.plist */; };
+		21D0D47E1E6097F5D55849FA /* Pods_Indiewave.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A38464C7D321E1449EC55D /* Pods_Indiewave.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0BE3FBA94F938E3FDF393071 /* Pods_Indiewave.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Indiewave.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D4402A3268937F300A184E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1DF7485426892D1C003C883F /* Indiewave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indiewave.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF7485726892D1C003C883F /* IndiewaveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndiewaveApp.swift; sourceTree = "<group>"; };
-		1DF7485926892D1C003C883F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		1DF7485B26892D1C003C883F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1DF7485E26892D1C003C883F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		1DF7486026892D1C003C883F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D9169098222441DCDC2F82D /* Pods-Indiewave.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Indiewave.debug.xcconfig"; path = "Target Support Files/Pods-Indiewave/Pods-Indiewave.debug.xcconfig"; sourceTree = "<group>"; };
-		94A5B242F6D394D078462FF2 /* Pods-Indiewave.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Indiewave.release.xcconfig"; path = "Target Support Files/Pods-Indiewave/Pods-Indiewave.release.xcconfig"; sourceTree = "<group>"; };
+		1DF92813268A434B004E9D4E /* Indiewave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indiewave.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF92816268A434B004E9D4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1DF92818268A434B004E9D4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1DF9281A268A434B004E9D4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1DF9281D268A434B004E9D4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1DF9281F268A434C004E9D4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1DF92822268A434C004E9D4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1DF92824268A434C004E9D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DF9282C268A528D004E9D4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3D2E7DE88370CE415E72C402 /* Pods-Indiewave.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Indiewave.debug.xcconfig"; path = "Target Support Files/Pods-Indiewave/Pods-Indiewave.debug.xcconfig"; sourceTree = "<group>"; };
+		5201D0BF53AA7FAB66FA88A9 /* Pods-Indiewave.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Indiewave.release.xcconfig"; path = "Target Support Files/Pods-Indiewave/Pods-Indiewave.release.xcconfig"; sourceTree = "<group>"; };
+		80A38464C7D321E1449EC55D /* Pods_Indiewave.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Indiewave.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1DF7485126892D1C003C883F /* Frameworks */ = {
+		1DF92810268A434B004E9D4E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				419819867F23460A58515D54 /* Pods_Indiewave.framework in Frameworks */,
+				21D0D47E1E6097F5D55849FA /* Pods_Indiewave.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1DF7484B26892D1C003C883F = {
+		183B6215C7CA869B2D54BD38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1DF7485626892D1C003C883F /* Indiewave */,
-				1DF7485526892D1C003C883F /* Products */,
-				2FF57E1BC76DB943DB7D6642 /* Pods */,
-				5028DAB4CC5915DF80C25E2F /* Frameworks */,
+				80A38464C7D321E1449EC55D /* Pods_Indiewave.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1DF9280A268A434B004E9D4E = {
+			isa = PBXGroup;
+			children = (
+				1DF92815268A434B004E9D4E /* Indiewave */,
+				1DF92814268A434B004E9D4E /* Products */,
+				BEBDABE98CF575951FB7095E /* Pods */,
+				183B6215C7CA869B2D54BD38 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		1DF7485526892D1C003C883F /* Products */ = {
+		1DF92814268A434B004E9D4E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1DF7485426892D1C003C883F /* Indiewave.app */,
+				1DF92813268A434B004E9D4E /* Indiewave.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1DF7485626892D1C003C883F /* Indiewave */ = {
+		1DF92815268A434B004E9D4E /* Indiewave */ = {
 			isa = PBXGroup;
 			children = (
-				1D4402A3268937F300A184E1 /* GoogleService-Info.plist */,
-				1DF7485726892D1C003C883F /* IndiewaveApp.swift */,
-				1DF7485926892D1C003C883F /* ContentView.swift */,
-				1DF7485B26892D1C003C883F /* Assets.xcassets */,
-				1DF7486026892D1C003C883F /* Info.plist */,
-				1DF7485D26892D1C003C883F /* Preview Content */,
+				1DF92816268A434B004E9D4E /* AppDelegate.swift */,
+				1DF92818268A434B004E9D4E /* SceneDelegate.swift */,
+				1DF9281A268A434B004E9D4E /* ViewController.swift */,
+				1DF9282C268A528D004E9D4E /* GoogleService-Info.plist */,
+				1DF9281C268A434B004E9D4E /* Main.storyboard */,
+				1DF9281F268A434C004E9D4E /* Assets.xcassets */,
+				1DF92821268A434C004E9D4E /* LaunchScreen.storyboard */,
+				1DF92824268A434C004E9D4E /* Info.plist */,
 			);
 			path = Indiewave;
 			sourceTree = "<group>";
 		};
-		1DF7485D26892D1C003C883F /* Preview Content */ = {
+		BEBDABE98CF575951FB7095E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1DF7485E26892D1C003C883F /* Preview Assets.xcassets */,
+				3D2E7DE88370CE415E72C402 /* Pods-Indiewave.debug.xcconfig */,
+				5201D0BF53AA7FAB66FA88A9 /* Pods-Indiewave.release.xcconfig */,
 			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		2FF57E1BC76DB943DB7D6642 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4D9169098222441DCDC2F82D /* Pods-Indiewave.debug.xcconfig */,
-				94A5B242F6D394D078462FF2 /* Pods-Indiewave.release.xcconfig */,
-			);
-			name = Pods;
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		5028DAB4CC5915DF80C25E2F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0BE3FBA94F938E3FDF393071 /* Pods_Indiewave.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1DF7485326892D1C003C883F /* Indiewave */ = {
+		1DF92812268A434B004E9D4E /* Indiewave */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DF7486326892D1C003C883F /* Build configuration list for PBXNativeTarget "Indiewave" */;
+			buildConfigurationList = 1DF92827268A434C004E9D4E /* Build configuration list for PBXNativeTarget "Indiewave" */;
 			buildPhases = (
-				D0AA1C74FFC2300BB921ED98 /* [CP] Check Pods Manifest.lock */,
-				1DF7485026892D1C003C883F /* Sources */,
-				1DF7485126892D1C003C883F /* Frameworks */,
-				1DF7485226892D1C003C883F /* Resources */,
-				519AE55671ECE99C7D770D66 /* [CP] Embed Pods Frameworks */,
+				0E22B1BEFD97B69FA79CF8FD /* [CP] Check Pods Manifest.lock */,
+				1DF9280F268A434B004E9D4E /* Sources */,
+				1DF92810268A434B004E9D4E /* Frameworks */,
+				1DF92811268A434B004E9D4E /* Resources */,
+				C3BF15DCF5701222BB2B73F2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -116,24 +113,24 @@
 			);
 			name = Indiewave;
 			productName = Indiewave;
-			productReference = 1DF7485426892D1C003C883F /* Indiewave.app */;
+			productReference = 1DF92813268A434B004E9D4E /* Indiewave.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1DF7484C26892D1C003C883F /* Project object */ = {
+		1DF9280B268A434B004E9D4E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
-					1DF7485326892D1C003C883F = {
+					1DF92812268A434B004E9D4E = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
 			};
-			buildConfigurationList = 1DF7484F26892D1C003C883F /* Build configuration list for PBXProject "Indiewave" */;
+			buildConfigurationList = 1DF9280E268A434B004E9D4E /* Build configuration list for PBXProject "Indiewave" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -141,48 +138,32 @@
 				en,
 				Base,
 			);
-			mainGroup = 1DF7484B26892D1C003C883F;
-			productRefGroup = 1DF7485526892D1C003C883F /* Products */;
+			mainGroup = 1DF9280A268A434B004E9D4E;
+			productRefGroup = 1DF92814268A434B004E9D4E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1DF7485326892D1C003C883F /* Indiewave */,
+				1DF92812268A434B004E9D4E /* Indiewave */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1DF7485226892D1C003C883F /* Resources */ = {
+		1DF92811268A434B004E9D4E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DF7485F26892D1C003C883F /* Preview Assets.xcassets in Resources */,
-				1DF7485C26892D1C003C883F /* Assets.xcassets in Resources */,
-				1D4402A4268937F300A184E1 /* GoogleService-Info.plist in Resources */,
+				1DF92823268A434C004E9D4E /* LaunchScreen.storyboard in Resources */,
+				1DF9282D268A528D004E9D4E /* GoogleService-Info.plist in Resources */,
+				1DF92820268A434C004E9D4E /* Assets.xcassets in Resources */,
+				1DF9281E268A434B004E9D4E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		519AE55671ECE99C7D770D66 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Indiewave/Pods-Indiewave-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Indiewave/Pods-Indiewave-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Indiewave/Pods-Indiewave-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D0AA1C74FFC2300BB921ED98 /* [CP] Check Pods Manifest.lock */ = {
+		0E22B1BEFD97B69FA79CF8FD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -204,22 +185,59 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C3BF15DCF5701222BB2B73F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Indiewave/Pods-Indiewave-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Indiewave/Pods-Indiewave-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Indiewave/Pods-Indiewave-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1DF7485026892D1C003C883F /* Sources */ = {
+		1DF9280F268A434B004E9D4E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DF7485A26892D1C003C883F /* ContentView.swift in Sources */,
-				1DF7485826892D1C003C883F /* IndiewaveApp.swift in Sources */,
+				1DF9281B268A434B004E9D4E /* ViewController.swift in Sources */,
+				1DF92817268A434B004E9D4E /* AppDelegate.swift in Sources */,
+				1DF92819268A434B004E9D4E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		1DF9281C268A434B004E9D4E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DF9281D268A434B004E9D4E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1DF92821268A434C004E9D4E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DF92822268A434C004E9D4E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		1DF7486126892D1C003C883F /* Debug */ = {
+		1DF92825268A434C004E9D4E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,7 +298,7 @@
 			};
 			name = Debug;
 		};
-		1DF7486226892D1C003C883F /* Release */ = {
+		1DF92826268A434C004E9D4E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -335,18 +353,15 @@
 			};
 			name = Release;
 		};
-		1DF7486426892D1C003C883F /* Debug */ = {
+		1DF92828268A434C004E9D4E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D9169098222441DCDC2F82D /* Pods-Indiewave.debug.xcconfig */;
+			baseConfigurationReference = 3D2E7DE88370CE415E72C402 /* Pods-Indiewave.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Indiewave/Preview Content\"";
 				DEVELOPMENT_TEAM = 77X327TJNF;
-				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Indiewave/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,18 +373,15 @@
 			};
 			name = Debug;
 		};
-		1DF7486526892D1C003C883F /* Release */ = {
+		1DF92829268A434C004E9D4E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94A5B242F6D394D078462FF2 /* Pods-Indiewave.release.xcconfig */;
+			baseConfigurationReference = 5201D0BF53AA7FAB66FA88A9 /* Pods-Indiewave.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Indiewave/Preview Content\"";
 				DEVELOPMENT_TEAM = 77X327TJNF;
-				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Indiewave/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -384,25 +396,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DF7484F26892D1C003C883F /* Build configuration list for PBXProject "Indiewave" */ = {
+		1DF9280E268A434B004E9D4E /* Build configuration list for PBXProject "Indiewave" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DF7486126892D1C003C883F /* Debug */,
-				1DF7486226892D1C003C883F /* Release */,
+				1DF92825268A434C004E9D4E /* Debug */,
+				1DF92826268A434C004E9D4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DF7486326892D1C003C883F /* Build configuration list for PBXNativeTarget "Indiewave" */ = {
+		1DF92827268A434C004E9D4E /* Build configuration list for PBXNativeTarget "Indiewave" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DF7486426892D1C003C883F /* Debug */,
-				1DF7486526892D1C003C883F /* Release */,
+				1DF92828268A434C004E9D4E /* Debug */,
+				1DF92829268A434C004E9D4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1DF7484C26892D1C003C883F /* Project object */;
+	rootObject = 1DF9280B268A434B004E9D4E /* Project object */;
 }

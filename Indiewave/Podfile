@@ -20,5 +20,8 @@ target 'Indiewave' do
   # For example, to use Firebase Authentication and Cloud Firestore
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  
+  #Update Realm to clear simulator warnings
+  pod 'Realm', '~> 10.8'
 
 end
