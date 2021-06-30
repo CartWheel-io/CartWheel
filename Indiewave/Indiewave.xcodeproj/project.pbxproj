@@ -14,6 +14,15 @@
 		1DF92820268A434C004E9D4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DF9281F268A434C004E9D4E /* Assets.xcassets */; };
 		1DF92823268A434C004E9D4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF92821268A434C004E9D4E /* LaunchScreen.storyboard */; };
 		1DF9282D268A528D004E9D4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DF9282C268A528D004E9D4E /* GoogleService-Info.plist */; };
+		1DFB1B85268D11F600126486 /* BottomNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B84268D11F600126486 /* BottomNavigationStackView.swift */; };
+		1DFB1B87268D138400126486 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B86268D138400126486 /* CardView.swift */; };
+		1DFB1B8A268D142F00126486 /* SwipePhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B89268D142F00126486 /* SwipePhotosController.swift */; };
+		1DFB1B8C268D149F00126486 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B8B268D149F00126486 /* PhotoController.swift */; };
+		1DFB1B8F268D161900126486 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B8E268D161900126486 /* CardViewModel.swift */; };
+		1DFB1B92268D167F00126486 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B91268D167F00126486 /* Extensions+UIView.swift */; };
+		1DFB1B94268D16AD00126486 /* Firebase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B93268D16AD00126486 /* Firebase+Utils.swift */; };
+		1DFB1B97268D175C00126486 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B96268D175C00126486 /* User.swift */; };
+		1DFB1B99268D17E900126486 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B98268D17E900126486 /* HomeController.swift */; };
 		21D0D47E1E6097F5D55849FA /* Pods_Indiewave.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A38464C7D321E1449EC55D /* Pods_Indiewave.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +36,15 @@
 		1DF92822268A434C004E9D4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DF92824268A434C004E9D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF9282C268A528D004E9D4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1DFB1B84268D11F600126486 /* BottomNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavigationStackView.swift; sourceTree = "<group>"; };
+		1DFB1B86268D138400126486 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		1DFB1B89268D142F00126486 /* SwipePhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipePhotosController.swift; sourceTree = "<group>"; };
+		1DFB1B8B268D149F00126486 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
+		1DFB1B8E268D161900126486 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		1DFB1B91268D167F00126486 /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
+		1DFB1B93268D16AD00126486 /* Firebase+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Utils.swift"; sourceTree = "<group>"; };
+		1DFB1B96268D175C00126486 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1DFB1B98268D17E900126486 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		3D2E7DE88370CE415E72C402 /* Pods-Indiewave.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Indiewave.debug.xcconfig"; path = "Target Support Files/Pods-Indiewave/Pods-Indiewave.debug.xcconfig"; sourceTree = "<group>"; };
 		5201D0BF53AA7FAB66FA88A9 /* Pods-Indiewave.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Indiewave.release.xcconfig"; path = "Target Support Files/Pods-Indiewave/Pods-Indiewave.release.xcconfig"; sourceTree = "<group>"; };
 		80A38464C7D321E1449EC55D /* Pods_Indiewave.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Indiewave.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +94,11 @@
 				1DF92816268A434B004E9D4E /* AppDelegate.swift */,
 				1DF92818268A434B004E9D4E /* SceneDelegate.swift */,
 				1DF9281A268A434B004E9D4E /* ViewController.swift */,
+				1DFB1B95268D174E00126486 /* Model */,
+				1DFB1B90268D166700126486 /* Extensions */,
+				1DFB1B8D268D160900126486 /* ViewModels */,
+				1DFB1B88268D141900126486 /* Controllers */,
+				1DFB1B82268D11C400126486 /* Views */,
 				1DF9282C268A528D004E9D4E /* GoogleService-Info.plist */,
 				1DF9281C268A434B004E9D4E /* Main.storyboard */,
 				1DF9281F268A434C004E9D4E /* Assets.xcassets */,
@@ -83,6 +106,50 @@
 				1DF92824268A434C004E9D4E /* Info.plist */,
 			);
 			path = Indiewave;
+			sourceTree = "<group>";
+		};
+		1DFB1B82268D11C400126486 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1DFB1B84268D11F600126486 /* BottomNavigationStackView.swift */,
+				1DFB1B86268D138400126486 /* CardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1DFB1B88268D141900126486 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1DFB1B89268D142F00126486 /* SwipePhotosController.swift */,
+				1DFB1B8B268D149F00126486 /* PhotoController.swift */,
+				1DFB1B98268D17E900126486 /* HomeController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1DFB1B8D268D160900126486 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1DFB1B8E268D161900126486 /* CardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1DFB1B90268D166700126486 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1DFB1B91268D167F00126486 /* Extensions+UIView.swift */,
+				1DFB1B93268D16AD00126486 /* Firebase+Utils.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1DFB1B95268D174E00126486 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1DFB1B96268D175C00126486 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BEBDABE98CF575951FB7095E /* Pods */ = {
@@ -209,9 +276,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DFB1B94268D16AD00126486 /* Firebase+Utils.swift in Sources */,
+				1DFB1B85268D11F600126486 /* BottomNavigationStackView.swift in Sources */,
 				1DF9281B268A434B004E9D4E /* ViewController.swift in Sources */,
+				1DFB1B92268D167F00126486 /* Extensions+UIView.swift in Sources */,
 				1DF92817268A434B004E9D4E /* AppDelegate.swift in Sources */,
+				1DFB1B8C268D149F00126486 /* PhotoController.swift in Sources */,
+				1DFB1B8F268D161900126486 /* CardViewModel.swift in Sources */,
+				1DFB1B8A268D142F00126486 /* SwipePhotosController.swift in Sources */,
+				1DFB1B99268D17E900126486 /* HomeController.swift in Sources */,
 				1DF92819268A434B004E9D4E /* SceneDelegate.swift in Sources */,
+				1DFB1B87268D138400126486 /* CardView.swift in Sources */,
+				1DFB1B97268D175C00126486 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

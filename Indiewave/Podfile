@@ -9,6 +9,7 @@ target 'Indiewave' do
   
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
  
   # Add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
@@ -21,7 +22,9 @@ target 'Indiewave' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   
-  #Update Realm to clear simulator warnings
+  #miscellaneous
   pod 'Realm', '~> 10.8'
+  pod 'SDWebImage'
+  pod 'JGProgressHUD'
 
 end
