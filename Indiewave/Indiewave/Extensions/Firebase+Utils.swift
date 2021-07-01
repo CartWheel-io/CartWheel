@@ -9,10 +9,10 @@ import Firebase
 
 extension Firestore {
     
-    func fetchCurrentUser(completion: @escaping (User?, Error?) -> ()) {
+    func fetchCurrentProduct(completion: @escaping (Product?, Error?) -> ()) {
         
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, error) in
+        //guard let uid = Auth.auth().currentUser?.uid else { return }
+        Firestore.firestore().collection("test1").document("HLt9Uzji33OxILAsnh6F").getDocument { (snapshot, error) in
             
             if let error = error {
                 completion(nil, error)
@@ -21,8 +21,8 @@ extension Firestore {
             
             // fetched our user here
             guard let dictionary = snapshot?.data() else { return }
-            let user = User(dictionary: dictionary)
-            completion(user, nil)
+            let product = Product(dictionary: dictionary)
+            completion(product, nil)
         }
     }
 }

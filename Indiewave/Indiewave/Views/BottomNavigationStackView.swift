@@ -19,7 +19,7 @@ class BottomNavigationStackView: UIStackView {
     
     let profileButton = createButton(image: #imageLiteral(resourceName: "profile"))
     let favoriteButton = createButton(image: #imageLiteral(resourceName: "favorite"))
-    let homeButton = createButton(image: #imageLiteral(resourceName: "swipe"))
+    let homeButton = createButton(image: #imageLiteral(resourceName: "home"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +29,7 @@ class BottomNavigationStackView: UIStackView {
         
         
         
-        [homeButton, profileButton,favoriteButton].forEach { (button)  in
+        [profileButton, homeButton,favoriteButton].forEach { (button)  in
 
             addArrangedSubview(button)
         }

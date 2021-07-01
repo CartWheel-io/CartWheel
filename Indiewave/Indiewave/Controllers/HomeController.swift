@@ -26,8 +26,28 @@ class HomeController: UIViewController, CardViewDelegate {
           bottomControls.favoriteButton.addTarget(self, action: #selector(handleLikeButton), for: .touchUpInside)
           bottomControls.homeButton.addTarget(self, action: #selector(handleHomeButton), for: .touchUpInside)
         setupLayout()
-        //fetchCurrentUser()
+        fetchCurrentProduct()
       }
+    
+    
+    fileprivate var product: Product?
+        
+    fileprivate func fetchCurrentProduct() {
+            
+            cardsDeckView.subviews.forEach({$0.removeFromSuperview()})
+            Firestore.firestore().fetchCurrentProduct { (product, error) in
+                
+                if let error = error {
+                    print("Error, \(error)")
+                    return
+                }
+                
+                self.product = product
+                
+                self.fetchSwipes()
+            }
+        }
+
     var swipes = [String: Int]()
     
     fileprivate func fetchSwipes() {
@@ -41,15 +61,66 @@ class HomeController: UIViewController, CardViewDelegate {
                
                guard let data = snapshot?.data() as? [String: Int] else { return }
                self.swipes = data
-               //self.fetchUsersFromFirebase()
+               //self.fetchProductsFromFirebase()
            }
        }
+    
+    
+    fileprivate func fetchProductsFromFirebase() {
+            
+            //let minAge = user?.minSeekingAge ?? SettingsController.defaultMinSeekingAge
+            //let maxAge = user?.maxSeekingAge ?? SettingsController.defaultMaxSeekingAge
+            
+            let hud = JGProgressHUD(style: .dark)
+            hud.textLabel.text = "Fetching Products"
+            hud.show(in: view)
+            
+            //let query = Firestore.firestore().collection("users").whereField("age", isGreaterThan: minAge - 1).whereField("age", isLessThan: maxAge + 1)
+             let query = Firestore.firestore().collection("test1")
+            
+            topCardView = nil
+            
+            query.getDocuments { (snapshot, error) in
+                
+                hud.dismiss()
+                
+                if let error = error {
+                    print("Error: \(error)")
+                    return
+                }
+                
+                var prevoiusCardView: CardView?
+                
+                snapshot?.documents.forEach({ (documentSnapshot) in
+                    
+                    let productDictionary = documentSnapshot.data()
+                    let product = Product(dictionary: productDictionary)
+                    
+                    //let isNotCurrentUser = user.uid != Auth.auth().currentUser?.uid
+    //                let hasSwipedBefore = self.swipes[user.uid!] == nil
+                    let hasSwipedBefore = true
+                    //isNotCurrentUser &&
+                    if  hasSwipedBefore {
+                        
+                        let cardView = self.setupCardFromProduct(product: product)
+                        
+                        prevoiusCardView?.nextCardView = cardView
+                        prevoiusCardView = cardView
+                        
+                        if self.topCardView == nil {
+                            
+                            self.topCardView = cardView
+                        }
+                    }
+                })
+            }
+        }
     
     
     @objc fileprivate func handleHomeButton() {
            
            cardsDeckView.subviews.forEach({$0.removeFromSuperview()})
-           //fetchUsersFromFirebase()
+           fetchProductsFromFirebase()
        }
     
     @objc fileprivate func handleProfileButton() {
@@ -131,21 +202,10 @@ class HomeController: UIViewController, CardViewDelegate {
     }
     
     
-    fileprivate func setupFirestoreUserCards() {
-       
-           cardViewModels.forEach { (cardViewModel) in
-               
-               let cardView = CardView(frame: .zero)
-               cardView.cardViewModel = cardViewModel
-               cardsDeckView.addSubview(cardView)
-               cardView.fillSuperview()
-           }
-       }
-    
     //MARK: - Setup File Private Methods
         fileprivate func setupLayout() {
             
-            view.backgroundColor = .white
+            view.backgroundColor = .black
             
             let overallStackView = UIStackView(arrangedSubviews: [cardsDeckView, bottomControls])
             overallStackView.axis = .vertical
@@ -158,5 +218,18 @@ class HomeController: UIViewController, CardViewDelegate {
             
             overallStackView.bringSubviewToFront(cardsDeckView)
         }
+    
+    
+    fileprivate func setupFirestoreProductCards() {
+       
+           cardViewModels.forEach { (cardViewModel) in
+               
+               let cardView = CardView(frame: .zero)
+               cardView.cardViewModel = cardViewModel
+               cardsDeckView.addSubview(cardView)
+               cardView.fillSuperview()
+           }
+       }
+    
     
 }

@@ -54,7 +54,7 @@ class CardView: UIView {
     
     fileprivate let moreInfoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "photo_placeholder").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(handelMoreInfoButton), for: .touchUpInside)
         return button
     }()
@@ -153,9 +153,9 @@ class CardView: UIView {
         if shouldDismissCard {
             guard let homeController = self.cardViewDelegate as? HomeController else { return }
             if translationDirection == 1 {
-                //homeController.handleLikeButton()
+                homeController.handleLikeButton()
             } else {
-                //homeController.handleDislikeButton()
+                homeController.handleDislikeButton()
             }
         } else{
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
