@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [START default_firestore]
         FirebaseApp.configure()
         
+        
         return true
     }
 

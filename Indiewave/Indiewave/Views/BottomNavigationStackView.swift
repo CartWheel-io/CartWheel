@@ -9,9 +9,17 @@ import UIKit
 
 class BottomNavigationStackView: UIStackView {
     
-    let profileButton = UIButton(type: .system)
-    let favoriteButton = UIButton(type: .system)
-    let swipeButton = UIButton(type: .system)
+    
+    static func createButton(image: UIImage) -> UIButton {
+           let button = UIButton(type: .system)
+           button.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+           button.imageView?.contentMode = .scaleToFill
+           return button
+    }
+    
+    let profileButton = createButton(image: #imageLiteral(resourceName: "profile"))
+    let favoriteButton = createButton(image: #imageLiteral(resourceName: "favorite"))
+    let homeButton = createButton(image: #imageLiteral(resourceName: "swipe"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,17 +27,13 @@ class BottomNavigationStackView: UIStackView {
         distribution = .equalCentering
         heightAnchor.constraint(equalToConstant: 80).isActive = true
         
-        profileButton.setImage(#imageLiteral(resourceName: "top_left_profile").withRenderingMode(.alwaysOriginal), for: .normal)
-        favoriteButton.setImage(#imageLiteral(resourceName: "top_left_profile").withRenderingMode(.alwaysOriginal), for: .normal)
-        swipeButton.setImage(#imageLiteral(resourceName: "top_right_messages").withRenderingMode(.alwaysOriginal), for: .normal)
         
-        [swipeButton, UIView(), profileButton, UIView(), swipeButton].forEach { (view)  in
+        
+        [homeButton, profileButton,favoriteButton].forEach { (button)  in
 
-            addArrangedSubview(view)
+            addArrangedSubview(button)
         }
         
-        isLayoutMarginsRelativeArrangement = true
-        layoutMargins = .init(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     required init(coder: NSCoder) {

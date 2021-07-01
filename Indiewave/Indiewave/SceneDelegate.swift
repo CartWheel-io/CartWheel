@@ -19,9 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        window?.backgroundColor = .green // or the color that you prefer
         window?.makeKeyAndVisible()
-        let controller = ViewController() // or the first controller presented in your app
+        let controller = HomeController() // or the first controller presented in your app
         window?.rootViewController = controller
 
     }
