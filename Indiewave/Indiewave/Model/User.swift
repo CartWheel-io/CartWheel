@@ -14,6 +14,7 @@ struct User {
     var uid: String?
     var gender: String?
     var email: String?
+    var image: String?
     
     init(dictionary: [String: Any]) {
         
@@ -23,6 +24,7 @@ struct User {
         self.uid = dictionary["uid"] as? String
         self.gender = dictionary["gender"] as? String
         self.email = dictionary["email"] as? String
+        self.image = dictionary["image"] as? String
         
         
         

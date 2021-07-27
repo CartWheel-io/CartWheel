@@ -11,7 +11,8 @@ struct Product: ProducesCardViewModel {
     
     var name: String?
     var url: String?
-    var price: Int?
+    var price: String?
+    var size: String?
     var description: String?
     var imageUrl1: String?
     var imageUrl2: String?
@@ -20,14 +21,16 @@ struct Product: ProducesCardViewModel {
     init(dictionary: [String: Any]) {
         
         // Initialize our user here
-        self.name = dictionary["fullName"] as? String ?? ""
+        self.name = dictionary["name"] as? String ?? ""
         self.url = dictionary["url"] as? String
-        self.price = dictionary["price"] as? Int
+        self.price = dictionary["price"] as? String
         self.description = dictionary["description"] as? String
+        self.size = dictionary["size"] as? String
+
         
-        self.imageUrl1 = dictionary["imageUrl1"] as? String
-        self.imageUrl2 = dictionary["imageUrl2"] as? String
-        self.imageUrl3 = dictionary["imageUrl3"] as? String
+        self.imageUrl1 = dictionary["imageURL1"] as? String
+        self.imageUrl2 = dictionary["imageURL2"] as? String
+        self.imageUrl3 = dictionary["imageURL3"] as? String
         
     }
     
@@ -35,7 +38,7 @@ struct Product: ProducesCardViewModel {
         
         let attributedText = NSMutableAttributedString(string: name ?? "", attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy)])
         
-        let priceString = price != nil ? "\(price!)" : "N\\A"
+        let priceString = self.price != nil ? self.description! : "N\\A"
         attributedText.append(NSAttributedString(string: " \(priceString)", attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .regular)]))
         
         let descriptionString = self.description != nil ? self.description! : "Not available"

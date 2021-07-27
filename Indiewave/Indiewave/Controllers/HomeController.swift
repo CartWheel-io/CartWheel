@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 import JGProgressHUD
 
-class HomeController: UIViewController, CardViewDelegate {
+class HomeController: UIViewController, CardViewDelegate, LoginControllerDelegate {
     
     
     let cardsDeckView   = UIView()
@@ -29,8 +29,26 @@ class HomeController: UIViewController, CardViewDelegate {
         fetchCurrentProduct()
       }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if Auth.auth().currentUser == nil {
+            
+            let registrationController = RegistrationController()
+            registrationController.loginControllerDelegate = self
+            let navigationController = UINavigationController(rootViewController: registrationController)
+            present(navigationController, animated: true, completion: nil)
+        }
+    }
+    
+    func didFinishLoggingIn() {
+           
+           fetchCurrentProduct()
+    }
+    
     
     fileprivate var product: Product?
+    
         
     fileprivate func fetchCurrentProduct() {
             
@@ -53,15 +71,15 @@ class HomeController: UIViewController, CardViewDelegate {
     fileprivate func fetchSwipes() {
            
           // guard let uid = Auth.auth().currentUser?.uid else { return }
-           Firestore.firestore().collection("test1").document("HLt9Uzji33OxILAsnh6F").getDocument { (snapshot, error) in
-               if let error = error {
+        Firestore.firestore().collection("products").document("0Hf8ZtktuGK3UdM9YcWm").getDocument { (snapshot, error) in
+            if let error = error {
                    print("Failed to fetch sipes info for currently logged in user: ",error)
                    return
                }
                
                guard let data = snapshot?.data() as? [String: Int] else { return }
                self.swipes = data
-               //self.fetchProductsFromFirebase()
+               self.fetchProductsFromFirebase()
            }
        }
     
@@ -76,7 +94,7 @@ class HomeController: UIViewController, CardViewDelegate {
             hud.show(in: view)
             
             //let query = Firestore.firestore().collection("users").whereField("age", isGreaterThan: minAge - 1).whereField("age", isLessThan: maxAge + 1)
-             let query = Firestore.firestore().collection("test1")
+            let query = Firestore.firestore().collection("products")
             
             topCardView = nil
             

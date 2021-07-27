@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1D68ACE2268DDF1B00EE62C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D68ACE1268DDF1B00EE62C8 /* User.swift */; };
+		1DB9C2AA269797E400601EC0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2A9269797E400601EC0 /* LoginController.swift */; };
+		1DB9C2AC2697983900601EC0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2AB2697983900601EC0 /* LoginViewModel.swift */; };
+		1DB9C2AE2697988000601EC0 /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2AD2697988000601EC0 /* UserDetailsController.swift */; };
+		1DB9C2B02697990F00601EC0 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2AF2697990F00601EC0 /* Bindable.swift */; };
+		1DB9C2B22697995E00601EC0 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2B12697995E00601EC0 /* CustomTextField.swift */; };
+		1DB9C2B426979B9A00601EC0 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2B326979B9A00601EC0 /* RegistrationController.swift */; };
+		1DB9C2B626979BF500601EC0 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2B526979BF500601EC0 /* RegistrationViewModel.swift */; };
+		1DB9C2B826979C1C00601EC0 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2B726979C1C00601EC0 /* SettingsController.swift */; };
+		1DB9C2BA2697A3B700601EC0 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2B92697A3B700601EC0 /* SettingsCell.swift */; };
 		1DF92817268A434B004E9D4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF92816268A434B004E9D4E /* AppDelegate.swift */; };
 		1DF92819268A434B004E9D4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF92818268A434B004E9D4E /* SceneDelegate.swift */; };
 		1DF9281B268A434B004E9D4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9281A268A434B004E9D4E /* ViewController.swift */; };
@@ -29,6 +38,15 @@
 
 /* Begin PBXFileReference section */
 		1D68ACE1268DDF1B00EE62C8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1DB9C2A9269797E400601EC0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1DB9C2AB2697983900601EC0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1DB9C2AD2697988000601EC0 /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
+		1DB9C2AF2697990F00601EC0 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		1DB9C2B12697995E00601EC0 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		1DB9C2B326979B9A00601EC0 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		1DB9C2B526979BF500601EC0 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		1DB9C2B726979C1C00601EC0 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		1DB9C2B92697A3B700601EC0 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		1DF92813268A434B004E9D4E /* Indiewave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indiewave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF92816268A434B004E9D4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DF92818268A434B004E9D4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +133,8 @@
 			children = (
 				1DFB1B84268D11F600126486 /* BottomNavigationStackView.swift */,
 				1DFB1B86268D138400126486 /* CardView.swift */,
+				1DB9C2B12697995E00601EC0 /* CustomTextField.swift */,
+				1DB9C2B92697A3B700601EC0 /* SettingsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,6 +145,11 @@
 				1DFB1B89268D142F00126486 /* SwipePhotosController.swift */,
 				1DFB1B8B268D149F00126486 /* PhotoController.swift */,
 				1DFB1B98268D17E900126486 /* HomeController.swift */,
+				1DB9C2A9269797E400601EC0 /* LoginController.swift */,
+				1DB9C2AD2697988000601EC0 /* UserDetailsController.swift */,
+				1DB9C2AF2697990F00601EC0 /* Bindable.swift */,
+				1DB9C2B326979B9A00601EC0 /* RegistrationController.swift */,
+				1DB9C2B726979C1C00601EC0 /* SettingsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -133,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				1DFB1B8E268D161900126486 /* CardViewModel.swift */,
+				1DB9C2AB2697983900601EC0 /* LoginViewModel.swift */,
+				1DB9C2B526979BF500601EC0 /* RegistrationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -282,16 +309,25 @@
 				1D68ACE2268DDF1B00EE62C8 /* User.swift in Sources */,
 				1DFB1B94268D16AD00126486 /* Firebase+Utils.swift in Sources */,
 				1DFB1B85268D11F600126486 /* BottomNavigationStackView.swift in Sources */,
+				1DB9C2B826979C1C00601EC0 /* SettingsController.swift in Sources */,
 				1DF9281B268A434B004E9D4E /* ViewController.swift in Sources */,
 				1DFB1B92268D167F00126486 /* Extensions+UIView.swift in Sources */,
+				1DB9C2B626979BF500601EC0 /* RegistrationViewModel.swift in Sources */,
 				1DF92817268A434B004E9D4E /* AppDelegate.swift in Sources */,
+				1DB9C2B02697990F00601EC0 /* Bindable.swift in Sources */,
 				1DFB1B8C268D149F00126486 /* PhotoController.swift in Sources */,
+				1DB9C2BA2697A3B700601EC0 /* SettingsCell.swift in Sources */,
+				1DB9C2B22697995E00601EC0 /* CustomTextField.swift in Sources */,
 				1DFB1B8F268D161900126486 /* CardViewModel.swift in Sources */,
+				1DB9C2B426979B9A00601EC0 /* RegistrationController.swift in Sources */,
+				1DB9C2AC2697983900601EC0 /* LoginViewModel.swift in Sources */,
 				1DFB1B8A268D142F00126486 /* SwipePhotosController.swift in Sources */,
 				1DFB1B99268D17E900126486 /* HomeController.swift in Sources */,
 				1DF92819268A434B004E9D4E /* SceneDelegate.swift in Sources */,
 				1DFB1B87268D138400126486 /* CardView.swift in Sources */,
 				1DFB1B97268D175C00126486 /* Product.swift in Sources */,
+				1DB9C2AA269797E400601EC0 /* LoginController.swift in Sources */,
+				1DB9C2AE2697988000601EC0 /* UserDetailsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
