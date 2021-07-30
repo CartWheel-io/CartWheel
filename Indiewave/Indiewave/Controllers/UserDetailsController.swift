@@ -12,6 +12,7 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
     var cardViewModel: CardViewModel! {
         didSet {
             infoLabel.attributedText = cardViewModel.attributedString
+            infoLabel.adjustsFontSizeToFitWidth = true
             swipingPhotosController.cardViewModel = cardViewModel
         }
     }
@@ -21,6 +22,7 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
         scrollView.alwaysBounceVertical = true
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.delegate = self
+
         return scrollView
     }()
     
@@ -35,16 +37,16 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
     
     let dismissButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "34").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "arrow").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(handleDismissButton), for: .touchUpInside)
         return button
     }()
     
-    lazy var dislikeButton = self.createButton(image: #imageLiteral(resourceName: "dismiss_circle").withRenderingMode(.alwaysOriginal), selector: #selector(handleDislikeButton))
+    //lazy var dislikeButton = self.createButton(image: #imageLiteral(resourceName: "dismiss_circle").withRenderingMode(.alwaysOriginal), selector: #selector(handleDislikeButton))
     
-    lazy var superLikeButton = self.createButton(image: #imageLiteral(resourceName: "super_like_circle").withRenderingMode(.alwaysOriginal), selector: #selector(handleSuperLikeButton))
+    //lazy var superLikeButton = self.createButton(image: #imageLiteral(resourceName: "super_like_circle").withRenderingMode(.alwaysOriginal), selector: #selector(handleSuperLikeButton))
     
-    lazy var likeButton = self.createButton(image: #imageLiteral(resourceName: "like_circle").withRenderingMode(.alwaysOriginal), selector: #selector(handleLikeButton))
+    //lazy var likeButton = self.createButton(image: #imageLiteral(resourceName: "like_circle").withRenderingMode(.alwaysOriginal), selector: #selector(handleLikeButton))
     
     fileprivate func createButton(image: UIImage, selector: Selector) -> UIButton {
         let button = UIButton(type: .system)
@@ -77,13 +79,13 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
     
     fileprivate func setupBottomControls() {
         
-        let stackView = UIStackView(arrangedSubviews: [dislikeButton, superLikeButton, likeButton])
-        stackView.distribution = .fillEqually
-        stackView.spacing = -32
+        //let stackView = UIStackView(arrangedSubviews: [dislikeButton, superLikeButton, likeButton])
+        //stackView.distribution = .fillEqually
+        //stackView.spacing = -32
         
-        view.addSubview(stackView)
-        stackView.anchor(top: nil, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: -16, right: 0), size: .init(width: 300, height: 80))
-        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //view.addSubview(stackView)
+        //stackView.anchor(top: nil, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: -16, right: 0), size: .init(width: 300, height: 80))
+        //stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     fileprivate func setupVisualBlurEffectView() {
@@ -103,9 +105,11 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
         let swipingView = swipingPhotosController.view!
         scrollView.addSubview(swipingView)
         
-        
         scrollView.addSubview(infoLabel)
-        infoLabel.anchor(top: swipingView.bottomAnchor, leading: scrollView.leadingAnchor, bottom: nil, trailing: scrollView.trailingAnchor, padding: .init(top: 16, left: 16, bottom: -16, right: -16))
+        
+        
+        infoLabel.anchor(top: swipingView.bottomAnchor, leading: scrollView.leadingAnchor, bottom: nil, trailing: scrollView.trailingAnchor, padding: .init(top: 16, left: 16, bottom: -16, right: -16), size: .init(width: UIScreen.screenWidth*0.75, height: UIScreen.screenHeight*0.15))
+    
         
         scrollView.addSubview(dismissButton)
         dismissButton.anchor(top: swipingView.bottomAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: -25, left: 0, bottom: 0, right: -25), size: .init(width: 50, height: 50))
@@ -123,7 +127,7 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
         
         let changeY = -scrollView.contentOffset.y
         var width = view.frame.width + changeY * 2
-        width = max(view.frame.width, width)
+        width = min(view.frame.width, width)
         
         let imageView = swipingPhotosController.view!
         imageView.frame = CGRect(x: min(0, -changeY), y: min(0, -changeY), width: width, height: width + extraSwipeHeight)

@@ -209,9 +209,9 @@ class HomeController: UIViewController, CardViewDelegate, LoginControllerDelegat
        }
     
     func didTapMoreInfo(cardViewModel: CardViewModel) {
-        //let userDetailsController = UserDetailsController()
-        //userDetailsController.cardViewModel = cardViewModel
-        //present(userDetailsController, animated: true, completion: nil)
+        let userDetailsController = UserDetailsController()
+        userDetailsController.cardViewModel = cardViewModel
+        present(userDetailsController, animated: true, completion: nil)
     }
     
     func didRemoveCard(cardView: CardView) {

@@ -18,14 +18,17 @@ class CardViewModel {
     let name: String
     let imageUrls: [String]
     let attributedString: NSAttributedString
+    let attributedName: NSAttributedString
     let textAlignment: NSTextAlignment
     
-    init(name: String, imageNames: [String], attributedString: NSAttributedString, textAlignment: NSTextAlignment) {
+    init(name: String, imageNames: [String], attributedString: NSAttributedString, attributedName: NSAttributedString, textAlignment: NSTextAlignment) {
         
         self.name              = name
         self.imageUrls        = imageNames
         self.attributedString = attributedString
+        self.attributedName = attributedName
         self.textAlignment    = textAlignment
+        
     }
     
     fileprivate var imageIndex = 0 {

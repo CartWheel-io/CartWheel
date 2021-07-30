@@ -163,7 +163,8 @@ class LoginController: UIViewController {
         
         navigationController?.isNavigationBarHidden = true
         view.addSubview(verticalStackView)
-        verticalStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: -50))
+        verticalStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing:
+        view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: -50))
         verticalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         view.addSubview(backToRegisterButton)

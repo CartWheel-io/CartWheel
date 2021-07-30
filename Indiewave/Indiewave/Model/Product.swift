@@ -36,14 +36,18 @@ struct Product: ProducesCardViewModel {
     
     func toCardViewModel() -> CardViewModel {
         
-        let attributedText = NSMutableAttributedString(string: name ?? "", attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy)])
-        
-        let priceString = self.price != nil ? self.description! : "N\\A"
-        attributedText.append(NSAttributedString(string: " \(priceString)", attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .regular)]))
-        
+       
+        let priceString = self.price
         let descriptionString = self.description != nil ? self.description! : "Not available"
         
-        attributedText.append(NSAttributedString(string: "\n\(descriptionString)", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .regular)]))
+        let attributedText = NSMutableAttributedString(string: name ?? "", attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy)])
+        
+        let attributedNameText = NSMutableAttributedString(string: name ?? "", attributes: [.font: UIFont.systemFont(ofSize: 23, weight: .heavy)])
+        
+        attributedText.append(NSAttributedString(string: "\n$\(priceString!)", attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .regular)]))
+        
+        attributedText.append(NSAttributedString(string: "\n\n\(descriptionString)", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .regular)]))
+        
         
         var imageUrls = [String]()
         
@@ -51,6 +55,6 @@ struct Product: ProducesCardViewModel {
         if let url = imageUrl2 { imageUrls.append(url) }
         if let url = imageUrl3 { imageUrls.append(url) }
         
-        return CardViewModel(name: self.name ?? "", imageNames: imageUrls, attributedString: attributedText, textAlignment: .left)
+        return CardViewModel(name: self.name ?? "", imageNames: imageUrls, attributedString: attributedText, attributedName: attributedNameText, textAlignment: .left)
     }
 }
