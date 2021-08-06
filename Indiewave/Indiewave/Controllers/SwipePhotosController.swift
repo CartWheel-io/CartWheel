@@ -13,7 +13,7 @@ class SwipePhotosController: UIPageViewController, UIPageViewControllerDataSourc
     
     var cardViewModel: CardViewModel! {
         didSet {
-            controllers = cardViewModel.imageUrls.map({ (imageUrl) -> UIViewController in
+            controllers = cardViewModel.imageURLs.map({ (imageUrl) -> UIViewController in
                 let photoController = PhotoController(imageUrl: imageUrl)
                 return photoController
             })
@@ -29,7 +29,7 @@ class SwipePhotosController: UIPageViewController, UIPageViewControllerDataSourc
     
     fileprivate func setupBarViews() {
         
-        cardViewModel.imageUrls.forEach { (_) in
+        cardViewModel.imageURLs.forEach { (_) in
             
             let barView = UIView()
             barView.backgroundColor = deselctedBarColor

@@ -19,7 +19,7 @@ class LoginController: UIViewController {
     
     let emailTextField: UITextField = {
         let textField = CustomTextField(padding: 22, height: 44)
-        textField.placeholder = "Enger email"
+        textField.placeholder = "Enter email"
         textField.keyboardType = .emailAddress
         textField.addTarget(self, action: #selector(handleTextField), for: .editingChanged)
         return textField
@@ -125,7 +125,7 @@ class LoginController: UIViewController {
             
             guard let ifFormValid = isFormValid else { return }
             self.loginButton.isEnabled = ifFormValid
-            self.loginButton.backgroundColor = ifFormValid ? #colorLiteral(red: 0.8252845407, green: 0, blue: 0.3240153193, alpha: 1) : .lightGray
+            self.loginButton.backgroundColor = ifFormValid ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : .lightGray
         }
         
         loginViewModel.isLogedIn.bind { [unowned self] (isRegistering) in
@@ -148,8 +148,8 @@ class LoginController: UIViewController {
     
     fileprivate func setupGradientLayer() {
         
-        let topColor    = #colorLiteral(red: 0.9880711436, green: 0.3838337064, blue: 0.3728808165, alpha: 1)
-        let bottomColor = #colorLiteral(red: 0.8920591474, green: 0.1065689698, blue: 0.4587435722, alpha: 1)
+        let topColor    = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        let bottomColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
         gradientLayer.locations = [0, 1]

@@ -168,7 +168,7 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
                 headerLabel.text = "Name"
                 break
             case 2:
-                headerLabel.text = "Profession"
+                headerLabel.text = "Gender"
                 break
             case 3:
                 headerLabel.text = "Age"

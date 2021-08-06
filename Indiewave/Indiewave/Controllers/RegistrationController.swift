@@ -149,7 +149,7 @@ class RegistrationController: UIViewController {
             self.registerButton.isEnabled = isFormValid
             if isFormValid {
                 
-                self.registerButton.backgroundColor = #colorLiteral(red: 0.8111879826, green: 0.1042452082, blue: 0.3321437836, alpha: 1)
+                self.registerButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                 
             } else {
                 
@@ -230,8 +230,8 @@ class RegistrationController: UIViewController {
     
     fileprivate func setupGradientLayer() {
         
-        let topColor    = #colorLiteral(red: 0.9880711436, green: 0.3838337064, blue: 0.3728808165, alpha: 1)
-        let bottomColor = #colorLiteral(red: 0.8920591474, green: 0.1065689698, blue: 0.4587435722, alpha: 1)
+        let topColor    = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        let bottomColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
         gradientLayer.locations = [0, 1]
