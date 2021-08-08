@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 import JGProgressHUD
 
-class HomeController: UIViewController, SettingsControllerDelegate,CardViewDelegate, LoginControllerDelegate {
+class HomeController: UIViewController, SettingsControllerDelegate, CardViewDelegate, LoginControllerDelegate {
     
     func didSaveSettings() {
         fetchCurrentProduct()
@@ -300,7 +300,9 @@ class HomeController: UIViewController, SettingsControllerDelegate,CardViewDeleg
     @objc fileprivate func handleFavoriteButton() {
         let favoriteController = FavoriteController()
         favoriteController.likedCards = self.likedCards
-        present(favoriteController, animated: true, completion: nil)
+        let navigationController = UINavigationController(rootViewController: favoriteController)
+
+        present(navigationController, animated: true, completion: nil)
         
        }
     

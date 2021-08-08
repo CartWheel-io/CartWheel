@@ -2,80 +2,114 @@
 //  FavoriteController.swift
 //  Indiewave
 //
-//  Created by Richmond Aisabor on 8/1/21.
+//  Created by Richmond Aisabor on 8/8/21.
 //
 
 import UIKit
-import SwiftUI
-import Firebase
 
+class FavoriteController: UITableViewController, UINavigationControllerDelegate {
 
-class FavoriteController: UIViewController, UIScrollViewDelegate, UINavigationControllerDelegate {
+    let CellIdentifier = "Cell Identifier"
     
     var likedCards = [Product]()
-    var nameCard = [String]()
-    var priceCard = [String]()
-    
 
-    let emailTextField: UITextField = {
-        let textField = CustomTextField(padding: 22, height: 44)
-        textField.placeholder = "Enter email"
-        textField.keyboardType = .emailAddress
-        return textField
-    }()
-    
-    let passwordTextField: UITextField = {
-        let textField = CustomTextField(padding: 22, height: 44)
-        textField.placeholder = "Enter password"
-        
-        textField.isSecureTextEntry = true
-        return textField
-    }()
-    
-    lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [
-            emailTextField,
-            passwordTextField,
-            ])
-        stackView.axis = .vertical
-        stackView.spacing = 8
-        return stackView
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        setupLayout()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        title = "Favorites"
+        
+        // Register Class
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: CellIdentifier)
+    }
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return likedCards.count
     }
 
     
-    fileprivate func setupLayout() {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath)
+        let item = likedCards[indexPath.row]
         
-        //self.navigationController!.navigationBar.topItem!.title = "Favorites"
-        //navigationController?.navigationBar.prefersLargeTitles = true
-    
-        view.backgroundColor = .black
-        
-        
-        view.addSubview(verticalStackView)
-        
-        verticalStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing:
-        view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: -50))
-        verticalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-     
+        // Configure Table View Cell
+        cell.textLabel?.text = item.name
+        let url = URL(string: item.imageURL1!)
+        let data = try? Data(contentsOf: url!)
+        cell.imageView!.image = UIImage(data: data!)
+
+        return cell
     }
     
-    
-    fileprivate func setupLikedCards() {
-       
-           likedCards.forEach { (card) in
-            nameCard.append(card.name!)
-            priceCard.append(card.price!)
-           }
-       }
+    override func tableView(_ tableView: UITableView,
+               heightForRowAt indexPath: IndexPath) -> CGFloat {
+       // Make the first row larger to accommodate a custom cell.
+//      if indexPath.row == 0{
+//          return 80
+//       }
 
-   
-    
+       // Use the default size for all other rows.
+       //return UITableView.automaticDimension
+        
+        return 80
+    }
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }
-
-
