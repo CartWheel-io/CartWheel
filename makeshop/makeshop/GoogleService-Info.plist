@@ -3,32 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>921987678013-v4du4i34gjg87s99egkhvedr07sp3j6e.apps.googleusercontent.com</string>
+	<string>20766962950-sqr0t2p8nr4fs75hkv3c4t9fq23ue85m.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.921987678013-v4du4i34gjg87s99egkhvedr07sp3j6e</string>
+	<string>com.googleusercontent.apps.20766962950-sqr0t2p8nr4fs75hkv3c4t9fq23ue85m</string>
 	<key>API_KEY</key>
-	<string>AIzaSyB2CfhOY9lP1Ty9tJF17yuZ48fDsyxXjOA</string>
+	<string>AIzaSyCRjLeK0uzExUBpgT32zHBnpPsWRjCQrpo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>921987678013</string>
+	<string>20766962950</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Richmond-Aisabor.Indiewave</string>
+	<string>makeshop</string>
 	<key>PROJECT_ID</key>
-	<string>indiewave-25334</string>
+	<string>makeshop-513ad</string>
 	<key>STORAGE_BUCKET</key>
-	<string>indiewave-25334.appspot.com</string>
+	<string>makeshop-513ad.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<true/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:921987678013:ios:677d93d7e586b23d428f54</string>
+	<string>1:20766962950:ios:a087dbb540e282c32f5a87</string>
 </dict>
 </plist>

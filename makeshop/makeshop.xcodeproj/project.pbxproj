@@ -35,7 +35,7 @@
 		1DFB1B94268D16AD00126486 /* Firebase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B93268D16AD00126486 /* Firebase+Utils.swift */; };
 		1DFB1B97268D175C00126486 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B96268D175C00126486 /* Product.swift */; };
 		1DFB1B99268D17E900126486 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFB1B98268D17E900126486 /* HomeController.swift */; };
-		21D0D47E1E6097F5D55849FA /* Pods_Indiewave.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A38464C7D321E1449EC55D /* Pods_Indiewave.framework */; };
+		21D0D47E1E6097F5D55849FA /* Pods_makeshop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A38464C7D321E1449EC55D /* Pods_makeshop.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,7 @@
 		1DB9C2B726979C1C00601EC0 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		1DB9C2B92697A3B700601EC0 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		1DBC0C3526C07F3100A2EA1B /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
-		1DF92813268A434B004E9D4E /* Indiewave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indiewave.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF92813268A434B004E9D4E /* makeshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = makeshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF92816268A434B004E9D4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DF92818268A434B004E9D4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1DF9281A268A434B004E9D4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +71,9 @@
 		1DFB1B98268D17E900126486 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		3D2E7DE88370CE415E72C402 /* Pods-Indiewave.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Indiewave.debug.xcconfig"; path = "Target Support Files/Pods-Indiewave/Pods-Indiewave.debug.xcconfig"; sourceTree = "<group>"; };
 		5201D0BF53AA7FAB66FA88A9 /* Pods-Indiewave.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Indiewave.release.xcconfig"; path = "Target Support Files/Pods-Indiewave/Pods-Indiewave.release.xcconfig"; sourceTree = "<group>"; };
-		80A38464C7D321E1449EC55D /* Pods_Indiewave.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Indiewave.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80A38464C7D321E1449EC55D /* Pods_makeshop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_makeshop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A331830B3E631A84A490E10B /* Pods-makeshop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-makeshop.debug.xcconfig"; path = "Target Support Files/Pods-makeshop/Pods-makeshop.debug.xcconfig"; sourceTree = "<group>"; };
+		F93ADAF4FD5DA29DF3C2DAD1 /* Pods-makeshop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-makeshop.release.xcconfig"; path = "Target Support Files/Pods-makeshop/Pods-makeshop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21D0D47E1E6097F5D55849FA /* Pods_Indiewave.framework in Frameworks */,
+				21D0D47E1E6097F5D55849FA /* Pods_makeshop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +91,7 @@
 		183B6215C7CA869B2D54BD38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				80A38464C7D321E1449EC55D /* Pods_Indiewave.framework */,
+				80A38464C7D321E1449EC55D /* Pods_makeshop.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,7 +99,7 @@
 		1DF9280A268A434B004E9D4E = {
 			isa = PBXGroup;
 			children = (
-				1DF92815268A434B004E9D4E /* Indiewave */,
+				1DF92815268A434B004E9D4E /* makeshop */,
 				1DF92814268A434B004E9D4E /* Products */,
 				BEBDABE98CF575951FB7095E /* Pods */,
 				183B6215C7CA869B2D54BD38 /* Frameworks */,
@@ -107,12 +109,12 @@
 		1DF92814268A434B004E9D4E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1DF92813268A434B004E9D4E /* Indiewave.app */,
+				1DF92813268A434B004E9D4E /* makeshop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1DF92815268A434B004E9D4E /* Indiewave */ = {
+		1DF92815268A434B004E9D4E /* makeshop */ = {
 			isa = PBXGroup;
 			children = (
 				1DF92816268A434B004E9D4E /* AppDelegate.swift */,
@@ -129,7 +131,7 @@
 				1DF92821268A434C004E9D4E /* LaunchScreen.storyboard */,
 				1DF92824268A434C004E9D4E /* Info.plist */,
 			);
-			path = Indiewave;
+			path = makeshop;
 			sourceTree = "<group>";
 		};
 		1DFB1B82268D11C400126486 /* Views */ = {
@@ -193,6 +195,8 @@
 			children = (
 				3D2E7DE88370CE415E72C402 /* Pods-Indiewave.debug.xcconfig */,
 				5201D0BF53AA7FAB66FA88A9 /* Pods-Indiewave.release.xcconfig */,
+				A331830B3E631A84A490E10B /* Pods-makeshop.debug.xcconfig */,
+				F93ADAF4FD5DA29DF3C2DAD1 /* Pods-makeshop.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -200,9 +204,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1DF92812268A434B004E9D4E /* Indiewave */ = {
+		1DF92812268A434B004E9D4E /* makeshop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DF92827268A434C004E9D4E /* Build configuration list for PBXNativeTarget "Indiewave" */;
+			buildConfigurationList = 1DF92827268A434C004E9D4E /* Build configuration list for PBXNativeTarget "makeshop" */;
 			buildPhases = (
 				0E22B1BEFD97B69FA79CF8FD /* [CP] Check Pods Manifest.lock */,
 				1DF9280F268A434B004E9D4E /* Sources */,
@@ -214,9 +218,9 @@
 			);
 			dependencies = (
 			);
-			name = Indiewave;
+			name = makeshop;
 			productName = Indiewave;
-			productReference = 1DF92813268A434B004E9D4E /* Indiewave.app */;
+			productReference = 1DF92813268A434B004E9D4E /* makeshop.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -233,7 +237,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1DF9280E268A434B004E9D4E /* Build configuration list for PBXProject "Indiewave" */;
+			buildConfigurationList = 1DF9280E268A434B004E9D4E /* Build configuration list for PBXProject "makeshop" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -246,7 +250,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1DF92812268A434B004E9D4E /* Indiewave */,
+				1DF92812268A434B004E9D4E /* makeshop */,
 			);
 		};
 /* End PBXProject section */
@@ -281,7 +285,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Indiewave-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-makeshop-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -294,15 +298,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Indiewave/Pods-Indiewave-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-makeshop/Pods-makeshop-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Indiewave/Pods-Indiewave-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-makeshop/Pods-makeshop-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Indiewave/Pods-Indiewave-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-makeshop/Pods-makeshop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -479,18 +483,18 @@
 		};
 		1DF92828268A434C004E9D4E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D2E7DE88370CE415E72C402 /* Pods-Indiewave.debug.xcconfig */;
+			baseConfigurationReference = A331830B3E631A84A490E10B /* Pods-makeshop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77X327TJNF;
-				INFOPLIST_FILE = Indiewave/Info.plist;
+				INFOPLIST_FILE = makeshop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Richmond-Aisabor.Indiewave";
+				PRODUCT_BUNDLE_IDENTIFIER = "Richmond-Aisabor.makeshop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -499,18 +503,18 @@
 		};
 		1DF92829268A434C004E9D4E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5201D0BF53AA7FAB66FA88A9 /* Pods-Indiewave.release.xcconfig */;
+			baseConfigurationReference = F93ADAF4FD5DA29DF3C2DAD1 /* Pods-makeshop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77X327TJNF;
-				INFOPLIST_FILE = Indiewave/Info.plist;
+				INFOPLIST_FILE = makeshop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Richmond-Aisabor.Indiewave";
+				PRODUCT_BUNDLE_IDENTIFIER = "Richmond-Aisabor.makeshop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -520,7 +524,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DF9280E268A434B004E9D4E /* Build configuration list for PBXProject "Indiewave" */ = {
+		1DF9280E268A434B004E9D4E /* Build configuration list for PBXProject "makeshop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DF92825268A434C004E9D4E /* Debug */,
@@ -529,7 +533,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DF92827268A434C004E9D4E /* Build configuration list for PBXNativeTarget "Indiewave" */ = {
+		1DF92827268A434C004E9D4E /* Build configuration list for PBXNativeTarget "makeshop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DF92828268A434C004E9D4E /* Debug */,
