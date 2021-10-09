@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import SafariServices
 
 class UserDetailsController: UIViewController, UIScrollViewDelegate {
+    
+    var radioURL: String = ""
     
     var cardViewModel: CardViewModel! {
         didSet {
             infoLabel.attributedText = cardViewModel.attributedString
+            radioURL = cardViewModel.url
             infoLabel.adjustsFontSizeToFitWidth = true
             swipingPhotosController.cardViewModel = cardViewModel
         }
@@ -28,6 +32,7 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
     
     let swipingPhotosController = SwipePhotosController()
     
+    
     let infoLabel: UILabel = {
         let label = UILabel()
         label.text = "User name 30\nDoctor\nSome bio text below"
@@ -42,11 +47,21 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
         return button
     }()
     
-    //lazy var dislikeButton = self.createButton(image: #imageLiteral(resourceName: "dismiss_circle").withRenderingMode(.alwaysOriginal), selector: #selector(handleDislikeButton))
+    let buyNowButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+        button.setTitle("Buy Now", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .disabled)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
+        button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+       // button.layer.cornerRadius = 18
+        button.clipsToBounds = true
+
+        button.addTarget(self, action: #selector(handleBuyNowButton), for: .touchUpInside)
+        return button
+    }()
     
-    //lazy var superLikeButton = self.createButton(image: #imageLiteral(resourceName: "super_like_circle").withRenderingMode(.alwaysOriginal), selector: #selector(handleSuperLikeButton))
-    
-    //lazy var likeButton = self.createButton(image: #imageLiteral(resourceName: "like_circle").withRenderingMode(.alwaysOriginal), selector: #selector(handleLikeButton))
     
     fileprivate func createButton(image: UIImage, selector: Selector) -> UIButton {
         let button = UIButton(type: .system)
@@ -56,8 +71,14 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
         return button
     }
     
-    @objc fileprivate func handleDislikeButton() {
+
+    
+    @objc fileprivate func handleBuyNowButton() {
         
+        let url = URL(string: radioURL)
+        let safariVC = SFSafariViewController(url: url!)
+        present(safariVC, animated: true, completion: nil)
+    
     }
     
     @objc fileprivate func handleSuperLikeButton() {
@@ -67,6 +88,8 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
     @objc fileprivate func handleLikeButton() {
         
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +136,11 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
         
         scrollView.addSubview(dismissButton)
         dismissButton.anchor(top: swipingView.bottomAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: -25, left: 0, bottom: 0, right: -25), size: .init(width: 50, height: 50))
+
+        scrollView.addSubview(buyNowButton)
+        
+        buyNowButton.frame.origin = CGPoint(x:self.view.frame.size.width/3, y:self.view.frame.size.height - buyNowButton.frame.size.height - 45)
+        
     }
     
     fileprivate let extraSwipeHeight: CGFloat = 80

@@ -18,6 +18,7 @@ struct Product: ProducesCardViewModel {
     var imageURL1: String?
     var imageURL2: String?
     var imageURL3: String?
+    
    
     init(dictionary: [String: Any]) {
         
@@ -34,6 +35,22 @@ struct Product: ProducesCardViewModel {
         self.imageURL2 = dictionary["imageURL2"] as? String
         self.imageURL3 = dictionary["imageURL3"] as? String
         
+    }
+    
+    func toDictionary() -> [String: Any] {
+        
+        let tempDict = ["name": name,
+                        "pid": pid,
+                         "url": url,
+                         "price": price,
+                         "size": size,
+                         "description": description,
+                         "imageURL1": imageURL1,
+                         "imageURL2": imageURL2,
+                         "imageURL3": imageURL3]
+        
+        return tempDict as [String : Any]
+ 
     }
     
     func toCardViewModel() -> CardViewModel {

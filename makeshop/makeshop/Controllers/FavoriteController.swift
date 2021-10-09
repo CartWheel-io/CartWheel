@@ -6,26 +6,47 @@
 //
 
 import UIKit
+import SafariServices
+
+private let reuseIdentifier = "FavoriteCell"
 
 class FavoriteController: UITableViewController, UINavigationControllerDelegate {
 
-    let CellIdentifier = "Cell Identifier"
-    
     var likedCards = [Product]()
+    var radioURL = ""
+    let buyNowButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+        
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .disabled)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
+        button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+       // button.layer.cornerRadius = 18
+        button.clipsToBounds = true
+
+        button.addTarget(self, action: #selector(handleBuyNowButton), for: .touchUpInside)
+        return button
+    }()
+    
+    var buyURLs = [String?]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
+         //self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         title = "Favorites"
         
         // Register Class
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: CellIdentifier)
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: reuseIdentifier)
     }
 
     // MARK: - Table view data source
@@ -42,18 +63,45 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath)
-        let item = likedCards[indexPath.row]
+            let item = likedCards[indexPath.row]
         
-        // Configure Table View Cell
-        cell.textLabel?.text = item.name
-        let url = URL(string: item.imageURL1!)
-        let data = try? Data(contentsOf: url!)
-        cell.imageView!.image = UIImage(data: data!)
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+            let button : UIButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
+            radioURL = item.url!
+            button.frame = CGRect(x: 120, y: 65, width: 100, height: 20)
+            button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+            button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .disabled)
+            button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
+            button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+            button.addTarget(self, action: #selector(handleBuyNowButton), for: .touchUpInside)
+            button.setTitle("Buy Now", for: .normal)
 
+            //Remove all subviews so the button isn't added twice when reusing the cell.
+        for view: UIView in cell.contentView.subviews {
+                view.removeFromSuperview()
+            }
+            cell.contentView.addSubview(button)
+        
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.lineBreakMode = .byWordWrapping
+            // Configure Table View Cell
+            cell.textLabel?.text = item.name
+            let url = URL(string: item.imageURL1!)
+            let data = try? Data(contentsOf: url!)
+            cell.imageView!.image = UIImage(data: data!)
+        
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      if editingStyle == .delete {
+        print("Deleted")
+
+        self.likedCards.remove(at: indexPath.row)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+      }
+    }
     override func tableView(_ tableView: UITableView,
                heightForRowAt indexPath: IndexPath) -> CGFloat {
        // Make the first row larger to accommodate a custom cell.
@@ -66,6 +114,17 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
         
         return 80
     }
+    
+    @objc fileprivate func handleBuyNowButton() {
+        
+        let url = URL(string: radioURL)
+        let safariVC = SFSafariViewController(url: url!)
+        present(safariVC, animated: true, completion: nil)
+    
+    }
+    
+    
+   
 
     /*
     // Override to support conditional editing of the table view.

@@ -15,6 +15,8 @@ protocol LoginControllerDelegate {
 
 class LoginController: UIViewController {
     
+
+    var registrationDelegate: RegistrationControllerDelegate?
     var loginDelegate: LoginControllerDelegate?
     
     let emailTextField: UITextField = {
@@ -51,7 +53,7 @@ class LoginController: UIViewController {
     
     fileprivate let backToRegisterButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Go Back", for: .normal)
+        button.setTitle("Register", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
@@ -97,7 +99,9 @@ class LoginController: UIViewController {
     
     @objc fileprivate func handleBackButton() {
         
-        navigationController?.popViewController(animated: true)
+        let registerController = RegistrationController()
+        registerController.registerDelegate = registrationDelegate
+        navigationController?.pushViewController(registerController, animated: true)
     }
     
     lazy var verticalStackView: UIStackView = {
@@ -114,10 +118,10 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupGradientLayer()
-        setupLayout()
-        setupTapGesture()
-        setupBindables()
+          setupGradientLayer()
+          setupLayout()
+          setupTapGesture()
+          setupBindables()
     }
     
     fileprivate func setupBindables() {
@@ -131,7 +135,7 @@ class LoginController: UIViewController {
         loginViewModel.isLogedIn.bind { [unowned self] (isRegistering) in
             
             if isRegistering == true {
-                self.loginHUD.textLabel.text = "Registering..."
+                self.loginHUD.textLabel.text = "Logging in..."
                 self.loginHUD.show(in: self.view)
             } else {
                 self.loginHUD.dismiss()
@@ -141,10 +145,10 @@ class LoginController: UIViewController {
     
     let gradientLayer = CAGradientLayer()
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        gradientLayer.frame = view.bounds
-    }
+    //override func viewWillLayoutSubviews() {
+        //super.viewWillLayoutSubviews()
+       // gradientLayer.frame = view.bounds
+    //}
     
     fileprivate func setupGradientLayer() {
         
@@ -165,7 +169,8 @@ class LoginController: UIViewController {
         view.addSubview(verticalStackView)
         verticalStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing:
         view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: -50))
-        verticalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+         verticalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         view.addSubview(backToRegisterButton)
         backToRegisterButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)

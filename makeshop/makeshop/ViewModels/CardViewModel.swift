@@ -24,7 +24,7 @@ class CardViewModel {
     let attributedDescription: NSAttributedString
     let attributedSize: NSAttributedString
     let textAlignment: NSTextAlignment
-    
+
     
     init(pid: String, url: String, imageNames: [String], attributedString: NSAttributedString, attributedName: NSAttributedString, attributedPrice: NSAttributedString, attributedDescription: NSAttributedString, attributedSize:NSAttributedString,  textAlignment: NSTextAlignment) {
         

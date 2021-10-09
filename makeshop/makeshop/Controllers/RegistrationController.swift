@@ -9,19 +9,22 @@ import UIKit
 import Firebase
 import JGProgressHUD
 
+protocol RegistrationControllerDelegate {
+    func didFinishLoggingIn()
+}
 class RegistrationController: UIViewController {
     
     var loginControllerDelegate: LoginControllerDelegate?
-    
+    var registerDelegate: RegistrationControllerDelegate?
     // UI Components
     let selectPhotoButton: UIButton = {
         
         let button = UIButton(type: .system)
         button.setTitle("Select Photo", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 32, weight: .heavy)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .heavy)
         button.backgroundColor = .white
         button.setTitleColor(.black, for: .normal)
-        button.heightAnchor.constraint(equalToConstant: 275).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 150).isActive = true
         button.layer.cornerRadius = 16
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(handleSelectPhoto), for: .touchUpInside)
@@ -265,7 +268,8 @@ class RegistrationController: UIViewController {
             fullNameTextField,
             emailTextField,
             passwordTextField,
-            registerButton
+            registerButton,
+            goToLoginButton
             ])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -285,13 +289,13 @@ class RegistrationController: UIViewController {
         overllStackView.axis = .horizontal
         overllStackView.spacing = 24
         
-        selectPhotoButton.widthAnchor.constraint(equalToConstant: 275).isActive = true
+        //selectPhotoButton.widthAnchor.constraint(equalToConstant: 275).isActive = true
         
         overllStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: -50))
         overllStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        view.addSubview(goToLoginButton)
-        goToLoginButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
+        //view.addSubview(goToLoginButton)
+        //goToLoginButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
     }
 }
 

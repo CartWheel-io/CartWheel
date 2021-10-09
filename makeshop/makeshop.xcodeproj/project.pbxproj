@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D3151E226F7E5A700A03BC8 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3151E126F7E5A700A03BC8 /* FavoriteCell.swift */; };
 		1D68ACE2268DDF1B00EE62C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D68ACE1268DDF1B00EE62C8 /* User.swift */; };
-		1DB0DE3326B63EF000164858 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB0DE3226B63EF000164858 /* FavoriteView.swift */; };
+		1D889BA126E06F5600DB3AE8 /* UserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D889BA026E06F5600DB3AE8 /* UserInfoHeader.swift */; };
+		1D8EB95226ED4006005D8701 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8EB95126ED4006005D8701 /* SettingsSection.swift */; };
 		1DB9C2AA269797E400601EC0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2A9269797E400601EC0 /* LoginController.swift */; };
 		1DB9C2AC2697983900601EC0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2AB2697983900601EC0 /* LoginViewModel.swift */; };
 		1DB9C2AE2697988000601EC0 /* UserDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2AD2697988000601EC0 /* UserDetailsController.swift */; };
@@ -39,8 +41,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D3151E126F7E5A700A03BC8 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		1D68ACE1268DDF1B00EE62C8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		1DB0DE3226B63EF000164858 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		1D889BA026E06F5600DB3AE8 /* UserInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
+		1D8EB95126ED4006005D8701 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		1DB9C2A9269797E400601EC0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1DB9C2AB2697983900601EC0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1DB9C2AD2697988000601EC0 /* UserDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsController.swift; sourceTree = "<group>"; };
@@ -125,9 +129,9 @@
 				1DFB1B8D268D160900126486 /* ViewModels */,
 				1DFB1B88268D141900126486 /* Controllers */,
 				1DFB1B82268D11C400126486 /* Views */,
-				1DF9282C268A528D004E9D4E /* GoogleService-Info.plist */,
 				1DF9281C268A434B004E9D4E /* Main.storyboard */,
 				1DF9281F268A434C004E9D4E /* Assets.xcassets */,
+				1DF9282C268A528D004E9D4E /* GoogleService-Info.plist */,
 				1DF92821268A434C004E9D4E /* LaunchScreen.storyboard */,
 				1DF92824268A434C004E9D4E /* Info.plist */,
 			);
@@ -141,7 +145,8 @@
 				1DFB1B86268D138400126486 /* CardView.swift */,
 				1DB9C2B12697995E00601EC0 /* CustomTextField.swift */,
 				1DB9C2B92697A3B700601EC0 /* SettingsCell.swift */,
-				1DB0DE3226B63EF000164858 /* FavoriteView.swift */,
+				1D889BA026E06F5600DB3AE8 /* UserInfoHeader.swift */,
+				1D3151E126F7E5A700A03BC8 /* FavoriteCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 			children = (
 				1DFB1B96268D175C00126486 /* Product.swift */,
 				1D68ACE1268DDF1B00EE62C8 /* User.swift */,
+				1D8EB95126ED4006005D8701 /* SettingsSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,7 +327,6 @@
 				1DFB1B85268D11F600126486 /* BottomNavigationStackView.swift in Sources */,
 				1DB9C2B826979C1C00601EC0 /* SettingsController.swift in Sources */,
 				1DF9281B268A434B004E9D4E /* ViewController.swift in Sources */,
-				1DB0DE3326B63EF000164858 /* FavoriteView.swift in Sources */,
 				1DFB1B92268D167F00126486 /* Extensions+UIView.swift in Sources */,
 				1DB9C2B626979BF500601EC0 /* RegistrationViewModel.swift in Sources */,
 				1DF92817268A434B004E9D4E /* AppDelegate.swift in Sources */,
@@ -330,11 +335,14 @@
 				1DB9C2BA2697A3B700601EC0 /* SettingsCell.swift in Sources */,
 				1DB9C2B22697995E00601EC0 /* CustomTextField.swift in Sources */,
 				1DFB1B8F268D161900126486 /* CardViewModel.swift in Sources */,
+				1D3151E226F7E5A700A03BC8 /* FavoriteCell.swift in Sources */,
+				1D8EB95226ED4006005D8701 /* SettingsSection.swift in Sources */,
 				1DBC0C3626C07F3100A2EA1B /* FavoriteController.swift in Sources */,
 				1DB9C2B426979B9A00601EC0 /* RegistrationController.swift in Sources */,
 				1DB9C2AC2697983900601EC0 /* LoginViewModel.swift in Sources */,
 				1DFB1B8A268D142F00126486 /* SwipePhotosController.swift in Sources */,
 				1DFB1B99268D17E900126486 /* HomeController.swift in Sources */,
+				1D889BA126E06F5600DB3AE8 /* UserInfoHeader.swift in Sources */,
 				1DF92819268A434B004E9D4E /* SceneDelegate.swift in Sources */,
 				1DFB1B87268D138400126486 /* CardView.swift in Sources */,
 				1DFB1B97268D175C00126486 /* Product.swift in Sources */,

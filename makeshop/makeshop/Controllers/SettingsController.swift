@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import JGProgressHUD
 import SDWebImage
+import SafariServices
 
 protocol SettingsControllerDelegate {
     func didSaveSettings()
@@ -21,7 +22,8 @@ class CustomerImagePickerController: UIImagePickerController {
     
 }
 
-class SettingsController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+/*
+ class SettingsController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var settingDelegate: SettingsControllerDelegate?
     
@@ -96,9 +98,10 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         super.viewDidLoad()
         
         setupNavigationItems()
+        setupTapGesture()
         tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         tableView.tableFooterView = UIView()
-        tableView.keyboardDismissMode = .interactive
+        tableView.keyboardDismissMode = .none
         
         fetchCurrentUser()
     }
@@ -113,22 +116,10 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
                 return
             }
             self.user = user
-            self.loadUserPhotos()
+            
             self.tableView.reloadData()
         }
     }
-
-    fileprivate func loadUserPhotos() {
-        
-        /*if let imageUrl = user?.image, let url = URL(string: imageUrl) {
-            
-            SDWebImageManager.shared().loadImage(with: url, options: .continueInBackground, progress: nil) { (image, _, _, _, _, _) in
-            self.image1Button.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
-            }
-        }
-         */
-    }
-    
     lazy var headerView: UIView = {
         
         let headerView = UIView()
@@ -177,7 +168,7 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
                 headerLabel.text = "Bio"
                 break
             default:
-                headerLabel.text = "Seeking Age Range"
+                break
             }
             headerLabel.font = UIFont.boldSystemFont(ofSize: 14)
             return headerLabel
@@ -206,40 +197,21 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         return section == 0 ? 0 : 1
     }
     
-    static let defaultMinSeekingAge = 18
-    static let defaultMaxSeekingAge = 50
+    static let defaultAge = 18
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-       // if indexPath.section == 5 {
-            
-            //let ageRangeCell = AgeRangeCell(style: .default, reuseIdentifier: nil)
-            
-            //ageRangeCell.minSlider.addTarget(self, action: #selector(handleMinSliderChange), for: .valueChanged)
-            //ageRangeCell.maxSlider.addTarget(self, action: #selector(handleMaxSliderChange), for: .valueChanged)
-            
-            //let minAge = product?.minSeekingAge ?? SettingsController.defaultMinSeekingAge
-           // let maxAge = produc?.maxSeekingAge ?? SettingsController.defaultMaxSeekingAge
-            
-            //ageRangeCell.minLabel.text = "Min: \(minAge)"
-            //ageRangeCell.maxLabel.text = "Max: \(maxAge)"
-            
-           // ageRangeCell.minSlider.value = Float(CGFloat(minAge))
-            //ageRangeCell.maxSlider.value = Float(CGFloat(maxAge))
-            //return ageRangeCell
-        //}
-        
-        let cell = SettingsCell(style: .default, reuseIdentifier: nil)
-        switch indexPath.section {
-        case 1:
-            cell.textField.placeholder = "Enter Name"
-            cell.textField.text = user?.name
-            cell.textField.addTarget(self, action: #selector(handleNameChange), for: .editingChanged)
-            break
-        case 2:
-            cell.textField.placeholder = "Enter Gender"
-            cell.textField.text = user?.gender
-            cell.textField.addTarget(self, action: #selector(handleGenderChange), for: .editingChanged)
+    let cell = SettingsCell(style: .default, reuseIdentifier: nil)
+      switch indexPath.section {
+         case 1:
+              cell.textField.placeholder = "Enter Name"
+              cell.textField.text = user?.name
+              cell.textField.addTarget(self, action: #selector(handleNameChange), for: .editingChanged)
+              break
+          case 2:
+              cell.textField.placeholder = "Enter Gender"
+              cell.textField.text = user?.gender
+              cell.textField.addTarget(self, action: #selector(handleGenderChange), for: .editingChanged)
             break
         case 3:
             cell.textField.placeholder = "Enter Age"
@@ -248,55 +220,26 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
             }
             cell.textField.addTarget(self, action: #selector(handleAgeChange), for: .editingChanged)
             break
-        default:
+       default:
             cell.textField.placeholder = "Enter Bio"
+            break
         }
         return cell
     }
     
-    /*
-    @objc fileprivate func handleMinSliderChange(slider: UISlider) {
-        
-        let indexPath = IndexPath(row: 0, section: 5)
-        let ageRangeCell = tableView.cellForRow(at: indexPath) as! AgeRangeCell
-        
-        if ageRangeCell.minSlider.value > ageRangeCell.maxSlider.value {
-            
-           ageRangeCell.maxSlider.value = ageRangeCell.minSlider.value
-            ageRangeCell.maxLabel.text = "Max: \(Int(slider.value))"
-        }
-        ageRangeCell.minLabel.text = "Min: \(Int(slider.value))"
-    
-        self.user?.minSeekingAge = Int(slider.value)
-    }
-    
-    @objc fileprivate func handleMaxSliderChange(slider: UISlider) {
-        
-        let indexPath = IndexPath(row: 0, section: 5)
-        let ageRangeCell = tableView.cellForRow(at: indexPath) as! AgeRangeCell
-        if ageRangeCell.maxSlider.value < ageRangeCell.minSlider.value {
-            
-            ageRangeCell.minSlider.value = ageRangeCell.maxSlider.value
-            ageRangeCell.minLabel.text = "Min: \(Int(slider.value))"
-        }
-        ageRangeCell.maxLabel.text = "Max: \(Int(slider.value))"
-        
-        self.user?.maxSeekingAge = Int(slider.value)
-    }
- */
-    
-    @objc fileprivate func handleNameChange(textField: UITextField) {
-        
+   
+  @objc fileprivate func handleNameChange(textField: UITextField) {
+        textField.isSecureTextEntry = true
         self.user?.name = textField.text
     }
     
     @objc fileprivate func handleGenderChange(textField: UITextField) {
-        
+        textField.isSecureTextEntry = true
         self.user?.gender = textField.text
     }
     
     @objc fileprivate func handleAgeChange(textField: UITextField) {
-        
+        textField.keyboardType = .default
         self.user?.age = Int(textField.text ?? "")
     }
     
@@ -308,6 +251,15 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         navigationItem.rightBarButtonItems = [UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSaveButton)), UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogoutButton))]
     }
     
+    fileprivate func setupTapGesture() {
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+    }
+    
+    @objc fileprivate func handleTap() {
+        
+        self.view.endEditing(true)
+    }
     @objc fileprivate func handleCancelButton() {
         
         dismiss(animated: true, completion: nil)
@@ -348,8 +300,208 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
     }
     
     @objc fileprivate func handleLogoutButton() {
+           
+           try? Auth.auth().signOut()
+           dismiss(animated: true)
+       }
+    
+}
+ */
+
+
+//
+//  ViewController.swift
+//  SettingsTemplate
+//
+//  Created by Stephen Dowless on 2/10/19.
+//  Copyright © 2019 Stephan Dowless. All rights reserved.
+//
+
+
+private let reuseIdentifier = "SettingsCell"
+
+
+class SettingsController: UIViewController {
+    
+    // MARK: - Properties
+    
+    var tableView: UITableView!
+    var userInfoHeader: UserInfoHeader!
+    static let defaultAge = 18
+    var settingDelegate: SettingsControllerDelegate?
+    var user: User?
+    
+    // MARK: - Init
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+    }
+
+    // MARK: - Helper Functions
+    
+    func configureTableView() {
+        tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = 60
         
-        try? Auth.auth().signOut()
-        dismiss(animated: true)
+        tableView.register(SettingsCell.self, forCellReuseIdentifier: reuseIdentifier)
+        view.addSubview(tableView)
+        tableView.frame = view.frame
+        
+        let frame = CGRect(x: 0, y: 88, width: view.frame.width, height: 100)
+        userInfoHeader = UserInfoHeader(frame: frame)
+        tableView.tableHeaderView = userInfoHeader
+        tableView.tableFooterView = UIView()
+    }
+    
+    func configureUI() {
+        configureTableView()
+        
+        //navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationItem.title = "Settings"
+
+    }
+
+}
+
+extension SettingsController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return SettingsSection.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        guard let section = SettingsSection(rawValue: section) else { return 0 }
+        
+        
+        switch section {
+        case .Social: return SocialOptions.allCases.count
+        case .Communications: return CommunicationOptions.allCases.count
+        default: return 0
+        }
+        
+    }
+    
+    
+   
+ 
+ 
+    
+    fileprivate func fetchCurrentUser() {
+        
+        Firestore.firestore().fetchCurrentUser { (user, error) in
+            if let error = error {
+                print("Failed to fetch user:", error)
+                return
+            }
+            self.user = user
+            
+            self.tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.black
+        
+        print("Section is \(section)")
+        
+        let title = UILabel()
+        title.font = UIFont.boldSystemFont(ofSize: 16)
+        title.textColor = .white
+        title.text = SettingsSection(rawValue: section)?.description
+        view.addSubview(title)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        title.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        
+        
+        return view
+    }
+    
+
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsCell
+        guard let section = SettingsSection(rawValue: indexPath.section) else { return UITableViewCell() }
+        
+        
+        switch section {
+        case .Social:
+            let social = SocialOptions(rawValue: indexPath.row)
+            cell.sectionType = social
+        case .Communications:
+            let communications = CommunicationOptions(rawValue: indexPath.row)
+            cell.sectionType = communications
+            
+            //return CommunicationsOptions.allCases.count
+        }
+        
+        return cell
+    }
+    
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let social = SocialOptions(rawValue: indexPath.row)
+        let section = SettingsSection(rawValue: indexPath.section)
+        let communications = CommunicationOptions(rawValue: indexPath.row)
+        
+    switch section {
+        case .Social:
+            switch social {
+                case .logOut:
+                //print("Log Out")
+                    handleLogoutButton()
+                case .donate:
+                //print("Donate")
+                    handleDonationButton()
+                default:
+                    print("none")
+            }
+            
+        case .Communications:
+            switch communications {
+            case .notifications:
+                print("notifications")
+            case .email:
+                print("email")
+            case .reportCrashes:
+                print("report Crashes")
+            default:
+                print("none")
+            }
+        case .none:
+           print("none")
+    }
+        
+    }
+    
+   
+    
+    func handleLogoutButton() {
+           
+           try? Auth.auth().signOut()
+           dismiss(animated: true)
+           //exit(0)
+       }
+    
+     func handleDonationButton() {
+        
+        let url = URL(string: "https://www.patreon.com/richaisabor")
+        let safariVC = SFSafariViewController(url: url!)
+        present(safariVC, animated: true, completion: nil)
+        
+        print("Donates")
     }
 }
+
+    
