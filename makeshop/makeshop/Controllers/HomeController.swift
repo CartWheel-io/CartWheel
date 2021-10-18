@@ -21,7 +21,10 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
        
     var cardViewModels = [CardViewModel]()
     var likedCards = [Product]()
+    
     let favoriteController = FavoriteController()
+
+    
     
     
     
@@ -33,6 +36,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
           bottomControls.favoriteButton.addTarget(self, action: #selector(handleFavoriteButton), for: .touchUpInside)
           bottomControls.homeButton.addTarget(self, action: #selector(handleHomeButton), for: .touchUpInside)
           setupLayout()
+          
 
       }
     
@@ -54,11 +58,13 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
            
         cardsDeckView.subviews.forEach({$0.removeFromSuperview()})
         fetchProductsFromFirebase()
+      
         
     }
     
     
-    fileprivate var user: User?
+  
+   var user: User?
     
     fileprivate func fetchCurrentUser() {
         
@@ -72,7 +78,8 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
         
             self.user = user
             
-            self.fetchSwipes()
+            
+
         }
     }
     
@@ -96,34 +103,42 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     var swipes = [String: Any]()
     
     fileprivate func fetchSwipes() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        //favoriteController.likedCards
-        Firestore.firestore().collection("swipes").document(uid).getDocument { (snapshot, error) in
-            if let error = error {
-                   print("Failed to fetch swipe s info for currently logged in user: ",error)
-                   return
-               }
-               
-               guard let data = snapshot?.data() else { return }
-               self.swipes = data
-            
-               for swipe in self.swipes {
-                    
-                //self.favoriteController.likedCards.append(Product(dictionary: temp)
-               }
-                
-               //self.favoriteController.likedCards.append(Product(dictionary: data))
-               //print("Hello World")
-               //self.fetchProductsFromFirebase()
-           }
-       }
-    
+        //guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+       // let docRef =  .document(uid)
+        Firestore.firestore().collection("swipes")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        //self.favoriteController.likedCards.append(Product(snapshot: document))
+                    }
+                }
+        }
+        
+        
+        //self.favoriteController.likedCards.append(Product(dictionary: data))
+        //print("Hello World")
+        //self.fetchProductsFromFirebase()
+        
+        for swipe in self.favoriteController.likedCards {
+            print(swipe)
+        }
+        
+    }
+        
+        
+        
+
+      
     
     fileprivate func fetchProductsFromFirebase() {
             
             //let minAge = user?.minSeekingAge ?? SettingsController.defaultMinSeekingAge
             //let maxAge = user?.maxSeekingAge ?? SettingsController.defaultMaxSeekingAge
-            
+        
+
             let hud = JGProgressHUD(style: .dark)
             hud.textLabel.text = "Fetching Products"
             hud.show(in: view)
@@ -177,7 +192,6 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
                 })
             }
         
-        self.fetchSwipes()
     }
     
     
@@ -189,6 +203,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     
     @objc fileprivate func handleProfileButton() {
                  let settingsController = SettingsController()
+                 settingsController.fetchCurrentUser()
                  settingsController.settingDelegate = self
                  let navigationController = UINavigationController(rootViewController: settingsController)
                  present(navigationController, animated: true, completion: nil)
@@ -322,7 +337,8 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     @objc fileprivate func handleFavoriteButton() {
         //let favoriteController = FavoriteController()
         //print(self.likedCards)
-        favoriteController.likedCards = self.likedCards
+        fetchSwipes()
+        //favoriteController.likedCards = self.likedCards
         let navigationController = UINavigationController(rootViewController: favoriteController)
 
         present(navigationController, animated: true, completion: nil)

@@ -322,6 +322,7 @@ private let reuseIdentifier = "SettingsCell"
 
 
 class SettingsController: UIViewController {
+  
     
     // MARK: - Properties
     
@@ -336,6 +337,7 @@ class SettingsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+
     }
 
     // MARK: - Helper Functions
@@ -352,6 +354,8 @@ class SettingsController: UIViewController {
         
         let frame = CGRect(x: 0, y: 88, width: view.frame.width, height: 100)
         userInfoHeader = UserInfoHeader(frame: frame)
+        userInfoHeader.usernameLabel.text = self.user?.name
+        print(user?.name as Any)
         tableView.tableHeaderView = userInfoHeader
         tableView.tableFooterView = UIView()
     }
@@ -389,22 +393,33 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-   
- 
- 
-    
-    fileprivate func fetchCurrentUser() {
-        
-        Firestore.firestore().fetchCurrentUser { (user, error) in
-            if let error = error {
-                print("Failed to fetch user:", error)
-                return
-            }
-            self.user = user
+     func fetchCurrentUser() {
+         
+         guard let uid = Auth.auth().currentUser?.uid else { return }
+         Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, error) in
+             
+           
+             // fetched our user here
+             guard let dictionary = snapshot?.data() else { return }
+             self.user = User(dictionary: dictionary)
+             self.userInfoHeader.usernameLabel.text = self.user?.name
+             //print(self.user?.image as Any)
             
-            self.tableView.reloadData()
-        }
+            let url: NSURL = NSURL(string : (self.user?.image)!)!
+            //Now use image to create into NSData format
+            let imageData: NSData = NSData.init(contentsOf: url as URL)!
+            
+            self.userInfoHeader.profileImageView.image = UIImage(data: imageData as Data)
+             
+             
+        
+             
+         }
+ 
+     
     }
+ 
+
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
@@ -461,7 +476,7 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
                 case .logOut:
                 //print("Log Out")
                     handleLogoutButton()
-                case .donate:
+            case .donate:
                 //print("Donate")
                     handleDonationButton()
                 default:
@@ -491,8 +506,20 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
            
            try? Auth.auth().signOut()
            dismiss(animated: true)
-           //exit(0)
-       }
+        
+           if Auth.auth().currentUser == nil {
+            
+            let loginController = LoginController()
+            loginController.isModalInPresentation = true
+            
+            let topViewController = UIApplication.shared.keyWindow?.rootViewController
+            
+            topViewController?.present(loginController, animated: true, completion: nil)
+     
+        
+        }
+           
+    }
     
      func handleDonationButton() {
         

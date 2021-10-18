@@ -24,6 +24,7 @@ class LoginViewModel {
         }
     }
     
+    
     fileprivate func checkFromValidity() {
         let isValid = email?.isEmpty == false && password?.isEmpty == false
         isFormValid.value = isValid
@@ -36,6 +37,9 @@ class LoginViewModel {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             completion(error)
         }
+        
+  
+       
     }
 }
 

@@ -24,7 +24,7 @@ struct User {
         self.uid = dictionary["uid"] as? String
        // self.gender = dictionary["gender"] as? String
         self.email = dictionary["email"] as? String
-        self.image = dictionary["image"] as? String
+        self.image = dictionary["imageUrl1"] as? String
         
         
         

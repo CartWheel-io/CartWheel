@@ -11,21 +11,20 @@ import FirebaseFirestore
 
 class UserInfoHeader: UIView {
     // MARK: - Properties
-    let name = Auth.auth().currentUser?.displayName
-    let ipath = Auth.auth().currentUser?.photoURL
-    
- 
+
+
     let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         var image: UIImage?
-        let urlString =  "https://raisabor.github.io/images/pic00.jpg"
-        let url = NSURL(string: urlString)! as URL
-        if let imageData: NSData = NSData(contentsOf: url) {
+        /*
+        var url: URL?
+        if let imageData: NSData = NSData(contentsOf: url!) {
             image = UIImage(data: imageData as Data)
         }
+        */
         iv.image = image
         
         return iv
@@ -34,7 +33,6 @@ class UserInfoHeader: UIView {
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        //print(fullName)
         label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -43,6 +41,7 @@ class UserInfoHeader: UIView {
     let emailLabel: UILabel = {
         let label = UILabel()
         label.text = Auth.auth().currentUser?.email
+        print(Auth.auth().currentUser?.email as Any)
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -75,5 +74,7 @@ class UserInfoHeader: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
     
 }

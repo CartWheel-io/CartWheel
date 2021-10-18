@@ -43,6 +43,23 @@ extension Firestore {
             completion(product, nil)
         }
     }
-    
+
 }
 
+
+extension QueryDocumentSnapshot {
+    func toObject<T: Decodable>() throws -> T {
+        let jsonData = try JSONSerialization.data(withJSONObject: data(), options: [])
+        let object = try JSONDecoder().decode(T.self, from: jsonData)
+        
+        return object
+    }
+}
+
+extension QuerySnapshot {
+    
+    func toObject<T: Decodable>() throws -> [T] {
+        let objects: [T] = try documents.map({ try $0.toObject() })
+        return objects
+    }
+}

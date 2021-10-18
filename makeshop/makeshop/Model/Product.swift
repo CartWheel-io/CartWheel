@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import Firebase
 
 struct Product: ProducesCardViewModel {
     
@@ -36,6 +38,19 @@ struct Product: ProducesCardViewModel {
         self.imageURL3 = dictionary["imageURL3"] as? String
         
     }
+    
+    init(snapshot: QueryDocumentSnapshot) {
+        
+            self.name = snapshot.data()["name"] as? String
+            self.pid = snapshot.data()["pid"] as? String
+            self.url = snapshot.data()["url"] as? String
+            self.price = snapshot.data()["price"] as? String
+            self.description = snapshot.data()["description"] as? String
+            self.size = snapshot.data()["size"] as? String
+            self.imageURL1 = snapshot.data()["imageURL1"] as? String
+            self.imageURL2 = snapshot.data()["imageURL2"] as? String
+            self.imageURL3 = snapshot.data()["imageURL3"] as? String
+        }
     
     func toDictionary() -> [String: Any] {
         

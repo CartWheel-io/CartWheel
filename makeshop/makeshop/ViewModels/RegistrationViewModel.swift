@@ -14,13 +14,18 @@ class RegistrationViewModel {
     var bindableIsFormValid   = Bindable<Bool>()
     var bindableIsRegistering = Bindable<Bool>()
     
+    
+    
     var fullName: String? { didSet { checkForValidity() } }
     var email: String?    { didSet { checkForValidity() } }
     var password: String? { didSet { checkForValidity() } }
     
+
+   
+    
     func checkForValidity() {
         
-        let isFormValid = fullName?.isEmpty == false && email?.isEmpty == false && password?.isEmpty == false && bindableImage.value != nil
+        let isFormValid = fullName?.isEmpty == false && email?.isEmpty == false && password?.isEmpty == false  && bindableImage.value != nil
         bindableIsFormValid.value = isFormValid
     }
     
@@ -39,6 +44,8 @@ class RegistrationViewModel {
             }
             
             self.saveImageToFirebase(completion: completion)
+            
+            
 
         }
     }
@@ -63,7 +70,11 @@ class RegistrationViewModel {
                     return
                 }
                 
+            
+                
                 let imageUrl = url?.absoluteString ?? ""
+              
+               
                 
                 self.bindableIsRegistering.value = false
                 self.saveInfoToFirestore(imageURL: imageUrl, completion: completion)
@@ -75,6 +86,8 @@ class RegistrationViewModel {
         
         let uid = Auth.auth().currentUser?.uid ?? ""
         let email = Auth.auth().currentUser?.email ?? ""
+        let url = NSURL(string: imageURL)! as URL
+        
         
         let documentData: [String: Any] = [
             "fullName": fullName ?? "",
@@ -82,6 +95,13 @@ class RegistrationViewModel {
             "imageUrl1": imageURL,
             "email": email,
             ]
+        
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = self.fullName
+        print(Auth.auth().currentUser?.displayName as Any)
+        changeRequest?.photoURL = url
+        print(Auth.auth().currentUser?.photoURL as Any)
+        
         
         Firestore.firestore().collection("users").document(uid).setData(documentData) { (error) in
             
@@ -91,7 +111,13 @@ class RegistrationViewModel {
                 return
             }
             
+        
+            
             completion(nil)
         }
+    
+        
+        
     }
+        
 }
