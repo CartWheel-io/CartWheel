@@ -7,6 +7,8 @@
 
 import UIKit
 import SafariServices
+import Firebase
+import FirebaseFirestore
 
 private let reuseIdentifier = "FavoriteCell"
 
@@ -68,11 +70,11 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
             let button : UIButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
             radioURL = item.url!
-            button.frame = CGRect(x: 120, y: 65, width: 100, height: 20)
+            button.frame = CGRect(x: 120, y: 62, width: 175, height: 15)
             button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
             button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .disabled)
             button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 11, weight: .heavy)
             button.heightAnchor.constraint(equalToConstant: 44).isActive = true
             button.addTarget(self, action: #selector(handleBuyNowButton), for: .touchUpInside)
             button.setTitle("Buy Now", for: .normal)
@@ -83,8 +85,9 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
             }
             cell.contentView.addSubview(button)
         
-            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.numberOfLines = 2
             cell.textLabel?.lineBreakMode = .byWordWrapping
+            cell.textLabel?.adjustsFontSizeToFitWidth = true
             // Configure Table View Cell
             cell.textLabel?.text = item.name
             let url = URL(string: item.imageURL1!)
@@ -97,6 +100,18 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
       if editingStyle == .delete {
         print("Deleted")
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let item = likedCards[indexPath.row]
+        Firestore.firestore().collection("swipes").document(uid).updateData([
+            item.pid: FieldValue.delete(),
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+
 
         self.likedCards.remove(at: indexPath.row)
         self.tableView.deleteRows(at: [indexPath], with: .automatic)

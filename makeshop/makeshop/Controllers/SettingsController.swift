@@ -331,6 +331,7 @@ class SettingsController: UIViewController {
     static let defaultAge = 18
     var settingDelegate: SettingsControllerDelegate?
     var user: User?
+    var window: UIWindow?
     
     // MARK: - Init
 
@@ -486,11 +487,12 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
         case .Communications:
             switch communications {
             case .notifications:
-                print("notifications")
+                handleNotificationsButton()
             case .email:
-                print("email")
+                handleEmailButton()
             case .reportCrashes:
-                print("report Crashes")
+                handleReportCrashesButton()
+                
             default:
                 print("none")
             }
@@ -505,19 +507,29 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
     func handleLogoutButton() {
            
            try? Auth.auth().signOut()
-           dismiss(animated: true)
+           let controller = HomeController()
         
+           self.view.window?.makeKeyAndVisible()
+      
+           self.view.window?.rootViewController = controller
+           self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+       
+        /*
            if Auth.auth().currentUser == nil {
             
-            let loginController = LoginController()
-            loginController.isModalInPresentation = true
+            let controller = HomeController()
             
-            let topViewController = UIApplication.shared.keyWindow?.rootViewController
+            window?.makeKeyAndVisible()
+          
+            window?.rootViewController = controller
             
-            topViewController?.present(loginController, animated: true, completion: nil)
+            //let topViewController = UIApplication.shared.keyWindow?.rootViewController
+            
+            //window?.rootViewController.present(controller, animated: true, completion: nil)
      
         
         }
+      */
            
     }
     
@@ -528,6 +540,44 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
         present(safariVC, animated: true, completion: nil)
         
         print("Donates")
+    }
+    
+    func handleNotificationsButton() {
+        
+        let alert = UIAlertController(title: "Ooops!", message: "The Notifications Button May Need Service", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        print("notification")
+        
+    }
+    
+    func handleEmailButton() {
+        let alert = UIAlertController(title: "Ooops!", message: "The Email Button May Need Service", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        print("email")
+    }
+    
+    func handleReportCrashesButton() {
+        let alert = UIAlertController(title: "Ooops!", message: "The Report Crashes Button May Need Service", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        print("report Crashes")
     }
 }
 

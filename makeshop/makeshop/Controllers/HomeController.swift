@@ -22,7 +22,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     var cardViewModels = [CardViewModel]()
     var likedCards = [Product]()
     
-    let favoriteController = FavoriteController()
+
 
     
     
@@ -58,8 +58,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
            
         cardsDeckView.subviews.forEach({$0.removeFromSuperview()})
         fetchProductsFromFirebase()
-      
-        
+        fetchSwipes()
     }
     
     
@@ -103,17 +102,20 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     var swipes = [String: Any]()
     
     fileprivate func fetchSwipes() {
-        //guard let uid = Auth.auth().currentUser?.uid else { return }
+      guard let uid = Auth.auth().currentUser?.uid else { return }
         
        // let docRef =  .document(uid)
-        Firestore.firestore().collection("swipes")
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
+        Firestore.firestore().collection("swipes").document(uid).getDocument { (snapshot, error) in
+            
+                if let error = error {
+                    print("Error getting documents: \(error)")
                 } else {
-                    for document in querySnapshot!.documents {
-                        //self.favoriteController.likedCards.append(Product(snapshot: document))
+                    guard let dictionary = snapshot?.data() else { return }
+                    for swipe in dictionary {
+                        self.likedCards.append(Product(dictionary: swipe.value as! [String : Any]))
                     }
+                    
+                    
                 }
         }
         
@@ -122,9 +124,10 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
         //print("Hello World")
         //self.fetchProductsFromFirebase()
         
-        for swipe in self.favoriteController.likedCards {
+        for swipe in self.likedCards {
             print(swipe)
         }
+        
         
     }
         
@@ -208,7 +211,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
                  let navigationController = UINavigationController(rootViewController: settingsController)
                  present(navigationController, animated: true, completion: nil)
     
-       }
+    }
 
     
     var topCardView: CardView?
@@ -260,7 +263,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
         
           guard let uid = Auth.auth().currentUser?.uid else { return }
       
-          Firestore.firestore().collection("swipes").document(uid).getDocument { (snapshot, err) in
+            Firestore.firestore().collection("swipes").document(uid).getDocument { (snapshot, err) in
               if let err = err {
                   print("Failed to fetch document for user:", err)
                   return
@@ -269,7 +272,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
               guard let data = snapshot?.data() else { return }
               print(data)
               self.likedCards.append(tempProd)
-            
+              //self.favoriteController.likedCards.append(tempProd)
               
             
           }
@@ -335,10 +338,12 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     }
     
     @objc fileprivate func handleFavoriteButton() {
-        //let favoriteController = FavoriteController()
-        //print(self.likedCards)
-        fetchSwipes()
-        //favoriteController.likedCards = self.likedCards
+        let favoriteController = FavoriteController()
+        
+        for card in self.likedCards {
+            favoriteController.likedCards.append(card)
+        }
+        //self.likedCards.removeAll()
         let navigationController = UINavigationController(rootViewController: favoriteController)
 
         present(navigationController, animated: true, completion: nil)
