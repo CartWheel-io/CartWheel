@@ -21,6 +21,8 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
        
     var cardViewModels = [CardViewModel]()
     var likedCards = [Product]()
+    var userInfoHeader: UserInfoHeader!
+    
     
 
 
@@ -30,8 +32,6 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     
     override func viewDidLoad() {
           super.viewDidLoad()
-          
-          
           bottomControls.profileButton.addTarget(self, action: #selector(handleProfileButton), for: .touchUpInside)
           bottomControls.favoriteButton.addTarget(self, action: #selector(handleFavoriteButton), for: .touchUpInside)
           bottomControls.homeButton.addTarget(self, action: #selector(handleHomeButton), for: .touchUpInside)
@@ -57,30 +57,14 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     func didFinishLoggingIn() {
            
         cardsDeckView.subviews.forEach({$0.removeFromSuperview()})
+        fetchCurrentUser()
         fetchProductsFromFirebase()
         fetchSwipes()
     }
     
     
-  
-   var user: User?
-    
-    fileprivate func fetchCurrentUser() {
-        
-        Firestore.firestore().fetchCurrentUser { (user, error) in
-            
-            if let error = error {
-                print("Error, \(error)")
-                return
-            }
-            
-        
-            self.user = user
-            
-            
 
-        }
-    }
+    
     
     fileprivate var product: Product?
     
@@ -134,7 +118,11 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
         
         
 
-      
+    fileprivate func fetchCurrentUser() {
+        
+        SettingsController().fetchCurrentUser()
+        
+    }
     
     fileprivate func fetchProductsFromFirebase() {
             
@@ -206,7 +194,6 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     
     @objc fileprivate func handleProfileButton() {
                  let settingsController = SettingsController()
-                 settingsController.fetchCurrentUser()
                  settingsController.settingDelegate = self
                  let navigationController = UINavigationController(rootViewController: settingsController)
                  present(navigationController, animated: true, completion: nil)

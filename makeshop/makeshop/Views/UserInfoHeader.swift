@@ -19,12 +19,12 @@ class UserInfoHeader: UIView {
         iv.clipsToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         var image: UIImage?
-        /*
         var url: URL?
-        if let imageData: NSData = NSData(contentsOf: url!) {
+        url = Auth.auth().currentUser?.photoURL
+        print(url as Any)
+        if let imageData: NSData = NSData(contentsOf:  url!) {
             image = UIImage(data: imageData as Data)
         }
-        */
         iv.image = image
         
         return iv
@@ -32,7 +32,8 @@ class UserInfoHeader: UIView {
     
     let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = Auth.auth().currentUser?.displayName
+        print(Auth.auth().currentUser?.displayName as Any)
         label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
