@@ -86,9 +86,10 @@ class LoginController: UIViewController {
     @objc fileprivate func handleLoginButton() {
         
         loginViewModel.performLogin { (error) in
-            self.loginHUD.dismiss()
+        //loginHUD.dismiss()
             if let error = error {
-                print("Failed to login: \(error)")
+                self.showHUDWithError(error: error)
+                return
             }
             
             self.dismiss(animated: true, completion: {
@@ -96,6 +97,17 @@ class LoginController: UIViewController {
             })
         }
     }
+    
+    fileprivate func showHUDWithError(error: Error) {
+        
+        loginHUD.dismiss(animated: true)
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Failed login"
+        hud.detailTextLabel.text = error.localizedDescription
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 4)
+    }
+
     
     @objc fileprivate func handleBackButton() {
         

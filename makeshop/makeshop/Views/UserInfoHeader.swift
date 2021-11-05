@@ -25,6 +25,7 @@ class UserInfoHeader: UIView {
         if let imageData: NSData = NSData(contentsOf:  url!) {
             image = UIImage(data: imageData as Data)
         }
+         
         iv.image = image
         
         return iv

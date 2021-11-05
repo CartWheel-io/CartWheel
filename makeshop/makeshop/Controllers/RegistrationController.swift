@@ -14,7 +14,7 @@ protocol RegistrationControllerDelegate {
 }
 class RegistrationController: UIViewController {
     
-    var loginControllerDelegate: LoginControllerDelegate?
+    var loginDelegate: LoginControllerDelegate?
     var registerDelegate: RegistrationControllerDelegate?
     // UI Components
     let selectPhotoButton: UIButton = {
@@ -100,7 +100,7 @@ class RegistrationController: UIViewController {
     @objc fileprivate func handleGoToLogin() {
         
         let loginController = LoginController()
-        loginController.loginDelegate = loginControllerDelegate
+        loginController.loginDelegate = loginDelegate
         navigationController?.pushViewController(loginController, animated: true)
     }
     
@@ -126,8 +126,9 @@ class RegistrationController: UIViewController {
             }
             
             print("Finished registering")
+            SettingsController().fetchCurrentUser()
             self?.dismiss(animated: true, completion: {
-                self?.loginControllerDelegate?.didFinishLoggingIn()
+                self?.loginDelegate?.didFinishLoggingIn()
             })
         }
     }

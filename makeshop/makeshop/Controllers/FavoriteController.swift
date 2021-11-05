@@ -15,6 +15,7 @@ private let reuseIdentifier = "FavoriteCell"
 class FavoriteController: UITableViewController, UINavigationControllerDelegate {
 
     var likedCards = [Product]()
+    
     var radioURL = ""
     let buyNowButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
@@ -32,9 +33,12 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
     }()
     
     var buyURLs = [String?]()
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
 
         // Uncomment the following line to preserve selection between presentations
          self.clearsSelectionOnViewWillAppear = false
@@ -54,18 +58,19 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        // #warning ncomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return likedCards.count
+        print(self.likedCards.count)
+        return self.likedCards.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let item = likedCards[indexPath.row]
+            let item = self.likedCards[indexPath.row]
         
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
             let button : UIButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
@@ -80,7 +85,7 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
             button.setTitle("Buy Now", for: .normal)
 
             //Remove all subviews so the button isn't added twice when reusing the cell.
-        for view: UIView in cell.contentView.subviews {
+            for view: UIView in cell.contentView.subviews {
                 view.removeFromSuperview()
             }
             cell.contentView.addSubview(button)
@@ -98,25 +103,26 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-      if editingStyle == .delete {
-        print("Deleted")
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let item = likedCards[indexPath.row]
-        Firestore.firestore().collection("swipes").document(uid).updateData([
-            item.pid: FieldValue.delete(),
-        ]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
+          if editingStyle == .delete {
+            print("Deleted")
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            let item = self.likedCards[indexPath.row]
+            Firestore.firestore().collection("swipes").document(uid).updateData([
+                item.pid: FieldValue.delete(),
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
             }
+
+
+            self.likedCards.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+          }
         }
-
-
-        self.likedCards.remove(at: indexPath.row)
-        self.tableView.deleteRows(at: [indexPath], with: .automatic)
-      }
-    }
     override func tableView(_ tableView: UITableView,
                heightForRowAt indexPath: IndexPath) -> CGFloat {
        // Make the first row larger to accommodate a custom cell.
@@ -138,8 +144,6 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
     
     }
     
-    
-   
 
     /*
     // Override to support conditional editing of the table view.

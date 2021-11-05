@@ -20,7 +20,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     let bottomControls = BottomNavigationStackView()
        
     var cardViewModels = [CardViewModel]()
-    var likedCards = [Product]()
+    public var likedCards = [Product]()
     var userInfoHeader: UserInfoHeader!
     
     
@@ -86,14 +86,15 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     var swipes = [String: Any]()
     
     fileprivate func fetchSwipes() {
+    
       guard let uid = Auth.auth().currentUser?.uid else { return }
-        
        // let docRef =  .document(uid)
         Firestore.firestore().collection("swipes").document(uid).getDocument { (snapshot, error) in
             
                 if let error = error {
                     print("Error getting documents: \(error)")
                 } else {
+                    self.likedCards.removeAll()
                     guard let dictionary = snapshot?.data() else { return }
                     for swipe in dictionary {
                         self.likedCards.append(Product(dictionary: swipe.value as! [String : Any]))
@@ -114,10 +115,8 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
         
         
     }
-        
-        
-        
 
+        
     fileprivate func fetchCurrentUser() {
         
         SettingsController().fetchCurrentUser()
@@ -325,14 +324,11 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     }
     
     @objc fileprivate func handleFavoriteButton() {
+        self.fetchSwipes()
         let favoriteController = FavoriteController()
-        
-        for card in self.likedCards {
-            favoriteController.likedCards.append(card)
-        }
-        //self.likedCards.removeAll()
+        print("liked Cards count: ", self.likedCards.count)
         let navigationController = UINavigationController(rootViewController: favoriteController)
-
+        favoriteController.likedCards = self.likedCards
         present(navigationController, animated: true, completion: nil)
         
        }
