@@ -18,6 +18,7 @@ class LoginController: UIViewController {
 
     var registrationDelegate: RegistrationControllerDelegate?
     var loginDelegate: LoginControllerDelegate?
+    let fireImageView = UIImageView(image: #imageLiteral(resourceName: "login_icon-"))
     
     let emailTextField: UITextField = {
         let textField = CustomTextField(padding: 22, height: 44)
@@ -118,6 +119,7 @@ class LoginController: UIViewController {
     
     lazy var verticalStackView: UIStackView = {
         let stacView = UIStackView(arrangedSubviews: [
+            fireImageView,
             emailTextField,
             passwordTextField,
             loginButton

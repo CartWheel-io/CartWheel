@@ -127,6 +127,7 @@ class RegistrationController: UIViewController {
             
             print("Finished registering")
             SettingsController().fetchCurrentUser()
+            
             self?.dismiss(animated: true, completion: {
                 self?.loginDelegate?.didFinishLoggingIn()
             })

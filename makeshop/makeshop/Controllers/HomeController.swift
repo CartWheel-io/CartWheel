@@ -14,10 +14,12 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     
     func didSaveSettings() {
         fetchCurrentProduct()
+        fetchSwipes()
     }
     
     let cardsDeckView   = UIView()
     let bottomControls = BottomNavigationStackView()
+    let topStackView    = TopNavigationStackView()
        
     var cardViewModels = [CardViewModel]()
     public var likedCards = [Product]()
@@ -36,7 +38,8 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
           bottomControls.favoriteButton.addTarget(self, action: #selector(handleFavoriteButton), for: .touchUpInside)
           bottomControls.homeButton.addTarget(self, action: #selector(handleHomeButton), for: .touchUpInside)
           setupLayout()
-          
+          fetchProductsFromFirebase()
+          fetchSwipes()
 
       }
     
@@ -87,7 +90,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     
     fileprivate func fetchSwipes() {
     
-      guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
        // let docRef =  .document(uid)
         Firestore.firestore().collection("swipes").document(uid).getDocument { (snapshot, error) in
             
@@ -102,16 +105,20 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
                     
                     
                 }
+            
+    
         }
         
         
-        //self.favoriteController.likedCards.append(Product(dictionary: data))
+        //self.favoriteController[likedCards.append(Product(dictionary: data))
         //print("Hello World")
         //self.fetchProductsFromFirebase()
         
         for swipe in self.likedCards {
             print(swipe)
         }
+        
+
         
         
     }
@@ -185,7 +192,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     }
     
     
-    @objc fileprivate func handleHomeButton() {
+    @objc func handleHomeButton() {
            
            cardsDeckView.subviews.forEach({$0.removeFromSuperview()})
            fetchProductsFromFirebase()
@@ -324,14 +331,21 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
     }
     
     @objc fileprivate func handleFavoriteButton() {
-        self.fetchSwipes()
         let favoriteController = FavoriteController()
         print("liked Cards count: ", self.likedCards.count)
-        let navigationController = UINavigationController(rootViewController: favoriteController)
         favoriteController.likedCards = self.likedCards
+        let navigationController = UINavigationController(rootViewController: favoriteController)
+         
+        
         present(navigationController, animated: true, completion: nil)
         
+        
        }
+    
+    func updateLikedCards(tempLikes: [Product]) {
+        self.likedCards = tempLikes
+    }
+
     
     
     func didRemoveCard(cardView: CardView) {
@@ -345,7 +359,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
             
             view.backgroundColor = .black
             
-            let overallStackView = UIStackView(arrangedSubviews: [cardsDeckView, bottomControls])
+            let overallStackView = UIStackView(arrangedSubviews: [topStackView, cardsDeckView, bottomControls])
             overallStackView.axis = .vertical
             view.addSubview(overallStackView)
             

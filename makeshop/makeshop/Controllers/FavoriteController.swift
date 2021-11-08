@@ -17,6 +17,7 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
     var likedCards = [Product]()
     
     var radioURL = ""
+    
     let buyNowButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
         
@@ -61,6 +62,13 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
         // #warning ncomplete implementation, return the number of sections
         return 1
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isBeingDismissed {
+            HomeController().likedCards = self.likedCards
+        }
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -103,7 +111,7 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-          if editingStyle == .delete {
+        if editingStyle == .delete {
             print("Deleted")
             guard let uid = Auth.auth().currentUser?.uid else { return }
             let item = self.likedCards[indexPath.row]
@@ -119,7 +127,14 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
 
 
             self.likedCards.remove(at: indexPath.row)
+                    
+            let viewController = UIApplication.shared.windows.first!.rootViewController as! HomeController
+            
+            viewController.updateLikedCards(tempLikes: self.likedCards)
+            
+      
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
         
           }
         }
