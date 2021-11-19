@@ -1,6 +1,6 @@
 //
 //  User.swift
-//  Cartwheel
+//  CartWheel
 //
 //  Created by Richmond Aisabor on 7/1/21.
 //
@@ -18,6 +18,7 @@ class LoginController: UIViewController {
 
     var registrationDelegate: RegistrationControllerDelegate?
     var loginDelegate: LoginControllerDelegate?
+    
     let fireImageView = UIImageView(image: #imageLiteral(resourceName: "login_icon-"))
     
     let emailTextField: UITextField = {

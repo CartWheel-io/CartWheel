@@ -3,32 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>20766962950-sqr0t2p8nr4fs75hkv3c4t9fq23ue85m.apps.googleusercontent.com</string>
+	<string>1046055524572-eua607verhnm3n114aq28un6aks1fiu6.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.20766962950-sqr0t2p8nr4fs75hkv3c4t9fq23ue85m</string>
+	<string>com.googleusercontent.apps.1046055524572-eua607verhnm3n114aq28un6aks1fiu6</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCRjLeK0uzExUBpgT32zHBnpPsWRjCQrpo</string>
+	<string>AIzaSyCWbYjiTIzVOwPdp_0ddf2LKZjEU9R-xp0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>20766962950</string>
+	<string>1046055524572</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>makeshop</string>
+	<string>Richmond-Aisabor.CartWheel</string>
 	<key>PROJECT_ID</key>
-	<string>makeshop-513ad</string>
+	<string>cartwheel-b8e88</string>
 	<key>STORAGE_BUCKET</key>
-	<string>makeshop-513ad.appspot.com</string>
+	<string>cartwheel-b8e88.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:20766962950:ios:a087dbb540e282c32f5a87</string>
+	<string>1:1046055524572:ios:c33b15306ae4baa1a6fc19</string>
 </dict>
 </plist>

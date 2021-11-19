@@ -1,6 +1,6 @@
 //
 //  SettingsController.swift
-//  Cartwheel
+//  CartWheel
 //
 //  Created by Richmond Aisabor on 7/8/21.
 //

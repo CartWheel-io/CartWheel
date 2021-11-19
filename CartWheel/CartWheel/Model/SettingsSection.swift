@@ -1,6 +1,6 @@
 //
 //  SettingsSection.swift
-//  Cartwheel
+//  CartWheel
 //
 //  Created by Richmond Aisabor on 9/11/21.
 //

@@ -1,6 +1,6 @@
 //
 //  LoginViewModel.swift
-//  Cartwheel
+//  CartWheel
 //
 //  Created by Richmond Aisabor
 //

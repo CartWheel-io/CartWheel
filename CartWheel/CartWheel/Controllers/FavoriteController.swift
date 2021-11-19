@@ -1,6 +1,6 @@
 //
 //  FavoriteController.swift
-//  Cartwheel
+//  CartWheel
 //
 //  Created by Richmond Aisabor on 8/8/21.
 //

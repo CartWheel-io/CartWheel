@@ -1,6 +1,6 @@
 //
 //  User.swift
-//  Cartwheel
+//  CartWheel
 //
 //  Created by Richmond Aisabor on 7/1/21.
 //

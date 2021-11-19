@@ -1,6 +1,6 @@
 //
 //  HomeController.swift
-//  Cartwheel
+//  CartWheel
 //
 //  Created by Richmond Aisabor on 6/30/21.
 //
@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 import JGProgressHUD
 
-class HomeController: UIViewController, SettingsControllerDelegate, CardViewDelegate, LoginControllerDelegate, RegistrationControllerDelegate {
+class HomeController: UIViewController, SettingsControllerDelegate, CardViewDelegate, LoginControllerDelegate {
     
     func didSaveSettings() {
         fetchCurrentProduct()

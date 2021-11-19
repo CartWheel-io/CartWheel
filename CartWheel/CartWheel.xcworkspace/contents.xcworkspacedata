@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/richmondaisabor/Desktop/Repo/makeshop/CartWheel/CartWheel.xcodeproj">
+      location = "group:CartWheel.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:CartWheel.xcodeproj">
    </FileRef>
 </Workspace>

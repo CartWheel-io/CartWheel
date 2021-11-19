@@ -1,6 +1,6 @@
 //
 //  RegistrationController.swift
-//  Cartwheel
+//  CartWheel
 //
 //  Created by Richmond Aisabor on 7/8/21.
 //
@@ -17,6 +17,7 @@ class RegistrationController: UIViewController {
     
     var loginDelegate: LoginControllerDelegate?
     var registerDelegate: RegistrationControllerDelegate?
+    
     // UI Components
     let selectPhotoButton: UIButton = {
         
@@ -77,6 +78,7 @@ class RegistrationController: UIViewController {
         button.isEnabled = false
         button.addTarget(self, action: #selector(handleRegisterButton), for: .touchUpInside)
         return button
+        
     }()
     
     let goToLoginButton: UIButton = {
@@ -111,6 +113,7 @@ class RegistrationController: UIViewController {
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
+    
     fileprivate let registrationViewModel = RegistrationViewModel()
     fileprivate let registeringHUD = JGProgressHUD(style: .dark)
     
@@ -118,21 +121,22 @@ class RegistrationController: UIViewController {
         
         self.handleTap()
 
-        registrationViewModel.perfromRegistration { [weak self] (error) in
+        registrationViewModel.perfromRegistration { (error) in
             
             if let error = error {
                 
-                self?.showHUDWithError(error: error)
+                self.showHUDWithError(error: error)
                 return
             }
             
             print("Finished registering")
-            SettingsController().fetchCurrentUser()
             
-            self?.dismiss(animated: true, completion: {
-                print("----------")
-                self?.registerDelegate?.didFinishLoggingIn()
-                print("----------")
+            self.dismiss(animated: true, completion: {
+               
+                //self.loginDelegate?.didFinishLoggingIn()
+                let viewController = UIApplication.shared.windows.first!.rootViewController as! HomeController
+                viewController.didFinishLoggingIn()
+
             })
             
         }
