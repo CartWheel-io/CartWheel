@@ -89,7 +89,7 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
             button.titleLabel?.font = UIFont.systemFont(ofSize: 11, weight: .heavy)
             button.heightAnchor.constraint(equalToConstant: 44).isActive = true
             button.addTarget(self, action: #selector(handleBuyNowButton), for: .touchUpInside)
-            button.setTitle("Buy Now", for: .normal)
+            button.setTitle("Buy at \(item.store!)", for: .normal)
 
             //Remove all subviews so the button isn't added twice when reusing the cell.
             for view: UIView in cell.contentView.subviews {

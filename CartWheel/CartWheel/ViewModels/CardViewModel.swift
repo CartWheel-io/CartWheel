@@ -23,10 +23,11 @@ class CardViewModel {
     let attributedPrice: NSAttributedString
     let attributedDescription: NSAttributedString
     let attributedSize: NSAttributedString
+    let attributedStore: NSAttributedString
     let textAlignment: NSTextAlignment
 
     
-    init(pid: String, url: String, imageNames: [String], attributedString: NSAttributedString, attributedName: NSAttributedString, attributedPrice: NSAttributedString, attributedDescription: NSAttributedString, attributedSize:NSAttributedString,  textAlignment: NSTextAlignment) {
+    init(pid: String, url: String, imageNames: [String], attributedString: NSAttributedString, attributedName: NSAttributedString, attributedPrice: NSAttributedString, attributedDescription: NSAttributedString, attributedSize:NSAttributedString, attributedStore:NSAttributedString,  textAlignment: NSTextAlignment) {
         
         self.pid              = pid
         self.url              = url
@@ -37,6 +38,8 @@ class CardViewModel {
         self.attributedPrice = attributedPrice
         self.attributedDescription = attributedDescription
         self.attributedSize = attributedSize
+        self.attributedStore = attributedStore
+        
         
     }
     
@@ -70,6 +73,7 @@ class CardViewModel {
         let price = self.attributedPrice.string
         let description = self.attributedDescription.string
         let size = self.attributedSize.string
+        let store = self.attributedStore.string
         let imageURL1 = self.imageURLs[0]
         let imageURL2 = self.imageURLs[1]
         let imageURL3 = self.imageURLs[2]
@@ -80,6 +84,7 @@ class CardViewModel {
                          "price": price,
                          "size": size,
                          "description": description,
+                         "store": store,
                          "imageURL1": imageURL1,
                          "imageURL2": imageURL2,
                          "imageURL3": imageURL3]

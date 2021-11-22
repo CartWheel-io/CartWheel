@@ -16,6 +16,7 @@ struct Product: ProducesCardViewModel {
     var url: String?
     var price: String?
     var size: String?
+    var store: String?
     var description: String?
     var imageURL1: String?
     var imageURL2: String?
@@ -31,6 +32,7 @@ struct Product: ProducesCardViewModel {
         self.price = dictionary["price"] as? String
         self.description = dictionary["description"] as? String
         self.size = dictionary["size"] as? String
+        self.store = dictionary["store"] as? String
 
         
         self.imageURL1 = dictionary["imageURL1"] as? String
@@ -47,6 +49,7 @@ struct Product: ProducesCardViewModel {
             self.price = snapshot.data()["price"] as? String
             self.description = snapshot.data()["description"] as? String
             self.size = snapshot.data()["size"] as? String
+            self.store = snapshot.data()["store"] as? String
             self.imageURL1 = snapshot.data()["imageURL1"] as? String
             self.imageURL2 = snapshot.data()["imageURL2"] as? String
             self.imageURL3 = snapshot.data()["imageURL3"] as? String
@@ -60,6 +63,7 @@ struct Product: ProducesCardViewModel {
                          "price": price,
                          "size": size,
                          "description": description,
+                         "store": store,
                          "imageURL1": imageURL1,
                          "imageURL2": imageURL2,
                          "imageURL3": imageURL3]
@@ -76,9 +80,11 @@ struct Product: ProducesCardViewModel {
         let pidString = UUID().uuidString
         
         let descriptionString = self.description != nil ? self.description! : "Not available"
+        let sizeString = self.size
         
         
         let attributedName = NSMutableAttributedString(string: name ?? "", attributes: [.font: UIFont.systemFont(ofSize: 23, weight: .heavy)])
+        
         
         let attributedPrice = NSMutableAttributedString(string: price ?? "", attributes: [.font: UIFont.systemFont(ofSize: 23, weight: .heavy)])
         
@@ -86,12 +92,16 @@ struct Product: ProducesCardViewModel {
         
         let attributedSize = NSMutableAttributedString(string: size ?? "", attributes: [.font: UIFont.systemFont(ofSize: 23, weight: .heavy)])
         
-        let attributedText = NSMutableAttributedString(string: name ?? "", attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy)])
+        let attributedStore = NSMutableAttributedString(string: store ?? "", attributes: [.font: UIFont.systemFont(ofSize: 23, weight: .heavy)])
+        
+        let attributedText = NSMutableAttributedString(string: name ?? "", attributes: [.font: UIFont.systemFont(ofSize: 43, weight: .regular)])
         
         
-        attributedText.append(NSAttributedString(string: "\n$\(priceString!)", attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .regular)]))
+        attributedText.append(NSAttributedString(string: "\n\n$\(priceString!)", attributes: [.font: UIFont.systemFont(ofSize: 30, weight: .heavy)]))
         
-        attributedText.append(NSAttributedString(string: "\n\n\(descriptionString)", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .regular)]))
+        attributedText.append(NSAttributedString(string: "\n\(sizeString!)", attributes: [.font: UIFont.systemFont(ofSize: 30, weight: .regular)]))
+        
+        attributedText.append(NSAttributedString(string: "\n\n\(descriptionString)", attributes: [.font: UIFont.systemFont(ofSize: 22, weight: .regular)]))
         
         var imageURLs = [String]()
         
@@ -99,6 +109,6 @@ struct Product: ProducesCardViewModel {
         if let url = imageURL2 { imageURLs.append(url) }
         if let url = imageURL3 { imageURLs.append(url) }
         
-        return CardViewModel(pid: pidString , url: urlString, imageNames: imageURLs, attributedString: attributedText, attributedName: attributedName, attributedPrice: attributedPrice, attributedDescription: attributedDescription, attributedSize: attributedSize, textAlignment: .left)
+        return CardViewModel(pid: pidString , url: urlString, imageNames: imageURLs, attributedString: attributedText, attributedName: attributedName, attributedPrice: attributedPrice, attributedDescription: attributedDescription, attributedSize: attributedSize, attributedStore: attributedStore, textAlignment: .left)
     }
 }
