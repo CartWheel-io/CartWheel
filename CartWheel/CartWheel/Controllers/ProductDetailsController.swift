@@ -120,7 +120,9 @@ class ProductDetailsController: UIViewController, UIScrollViewDelegate {
 
         scrollView.addSubview(buyNowButton)
         
-        buyNowButton.frame.origin = CGPoint(x:self.view.frame.size.width/3, y:self.view.frame.size.height - buyNowButton.frame.size.height - 45)
+        buyNowButton.frame.origin = CGPoint(x:self.view.frame.size.width/3, y: self.view.frame.size.height - buyNowButton.frame.size.height - 145)
+        
+
         
     }
     
