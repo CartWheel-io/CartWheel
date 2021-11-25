@@ -48,13 +48,16 @@ class ProductDetailsController: UIViewController, UIScrollViewDelegate {
     }()
     
     let buyNowButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width:  300, height: 60))
         button.setTitle("Buy Now", for: .normal)
         button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .disabled)
         button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        button.layer.cornerRadius = 22
+        button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.layer.borderWidth = 4
 
         button.clipsToBounds = true
 
@@ -120,7 +123,9 @@ class ProductDetailsController: UIViewController, UIScrollViewDelegate {
 
         scrollView.addSubview(buyNowButton)
         
-        buyNowButton.frame.origin = CGPoint(x:self.view.frame.size.width/3, y: self.view.frame.size.height - buyNowButton.frame.size.height - 145)
+        buyNowButton.frame.origin = CGPoint(x: self.view.frame.midX/3.5, y: self.view.frame.midY + 300)
+        
+        
         
 
         

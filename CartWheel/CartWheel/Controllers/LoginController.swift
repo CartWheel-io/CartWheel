@@ -19,7 +19,7 @@ class LoginController: UIViewController {
     var registrationDelegate: RegistrationControllerDelegate?
     var loginDelegate: LoginControllerDelegate?
     
-    let fireImageView = UIImageView(image: #imageLiteral(resourceName: "login_icon-"))
+    let fireImageView = UIImageView(image: #imageLiteral(resourceName: "app_icon-"))
     
     let emailTextField: UITextField = {
         let textField = CustomTextField(padding: 22, height: 44)
@@ -120,13 +120,12 @@ class LoginController: UIViewController {
     
     lazy var verticalStackView: UIStackView = {
         let stacView = UIStackView(arrangedSubviews: [
-            fireImageView,
             emailTextField,
             passwordTextField,
             loginButton
             ])
         stacView.axis = .vertical
-        stacView.spacing = 8
+        stacView.spacing = 24
         return stacView
     }()
 
@@ -176,6 +175,12 @@ class LoginController: UIViewController {
     fileprivate func setupLayout() {
         
         navigationController?.isNavigationBarHidden = true
+        view.addSubview(fireImageView)
+        fireImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing:
+        view.trailingAnchor, padding: .init(top: 150, left: 50, bottom: 0, right: -50))
+    
+       
+        
         view.addSubview(verticalStackView)
         verticalStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing:
         view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: -50))
