@@ -19,7 +19,7 @@ class LoginController: UIViewController {
     var registrationDelegate: RegistrationControllerDelegate?
     var loginDelegate: LoginControllerDelegate?
     
-    let fireImageView = UIImageView(image: #imageLiteral(resourceName: "app_icon-"))
+    let fireImageView = UIImageView(image: #imageLiteral(resourceName: "login_icon-"))
     
     let emailTextField: UITextField = {
         let textField = CustomTextField(padding: 22, height: 44)
