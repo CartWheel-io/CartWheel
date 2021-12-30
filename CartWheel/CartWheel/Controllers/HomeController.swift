@@ -98,12 +98,36 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
         
     }
 
-        
-    fileprivate func fetchCurrentUser() {
-        
-        SettingsController().fetchCurrentUser()
-        
-    }
+    
+    
+    func fetchCurrentUser() {
+             
+             guard let uid = Auth.auth().currentUser?.uid else { return }
+             Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, error) in
+                 
+                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                 // fetched our user here
+                 guard let dictionary = snapshot?.data() else { return }
+                 let user = User(dictionary: dictionary)
+                 let url: URL = URL(string : (user.image)!)!
+                 
+                changeRequest?.displayName = user.name
+                changeRequest?.photoURL = url
+                 
+                changeRequest?.commitChanges { error in
+                    if error != nil {
+                          // An error happened.
+                            print("error")
+                        } else {
+                          // Profile updated.
+                            print("updated")
+                            
+                        }
+                }
+                 
+        }
+     
+}
     
     fileprivate func fetchProductsFromFirebase() {
             

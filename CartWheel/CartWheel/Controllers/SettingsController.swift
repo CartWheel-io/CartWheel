@@ -10,6 +10,7 @@ import Firebase
 import JGProgressHUD
 import SDWebImage
 import SafariServices
+import QuickTableViewController
 
 protocol SettingsControllerDelegate {
     func didSaveSettings()
@@ -25,21 +26,67 @@ class CustomerImagePickerController: UIImagePickerController {
 private let reuseIdentifier = "SettingsCell"
 
 
-class SettingsController: UIViewController {
+final class SettingsController: QuickTableViewController {
   
     
     // MARK: - Properties
     
-    var tableView: UITableView!
+    // Profile Image View
+    let profileImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        var image: UIImage?
+        var url: URL?
+        url = Auth.auth().currentUser?.photoURL
+        print(url as Any)
+        if let imageData: NSData = NSData(contentsOf:  url!) {
+            image = UIImage(data: imageData as Data)
+        }
+         
+        iv.image = image
+        
+        return iv
+    }()
+    //
+    
     var userInfoHeader: UserInfoHeader!
     static let defaultAge = 18
     var settingDelegate: SettingsControllerDelegate?
     var window: UIWindow?
+    //var tableContents:[Section]
     
     // MARK: - Init
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+    
+        tableContents = [
+             Section(title: "Profile", rows: [
+                NavigationRow(text: (Auth.auth().currentUser?.displayName)!,  detailText: .subtitle((Auth.auth().currentUser?.email)!), icon: .image(profileImageView.image!))
+             ], footer: ""),
+            
+            Section(title: "Notifications", rows: [
+              SwitchRow(text: "Email", switchValue: true, action: { _ in }),
+              SwitchRow(text: "Push Notification", switchValue: false, action: { _ in })
+            ]),
+
+            
+            Section(title: "Donation", rows: [
+                NavigationRow(text: "Patreon", detailText: .none, action: { [weak self] in self?.handleDonationButton($0) }),
+                NavigationRow(text: "PayPal", detailText: .none, action: { _ in }),
+            ], footer: ""),
+
+            Section(title: "", rows: [
+                NavigationRow(text: "Share CartWheel", detailText: .none, action: { [weak self] in self?.shareButton($0) }),
+            ], footer: ""),
+            
+            Section(title: "", rows: [
+                TapActionRow(text: "Logout", action: { [weak self] in self?.handleLogoutButton($0)})
+            ]),
+           ]
 
     }
 
@@ -65,16 +112,60 @@ class SettingsController: UIViewController {
 
     
     func configureUI() {
-        configureTableView()
+        //configureTableView()
         
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationItem.title = "Settings"
 
     }
+    
+    func handleLogoutButton(_ sender: Row) {
+           
+           try? Auth.auth().signOut()
+           let controller = HomeController()
+        
+           self.view.window?.makeKeyAndVisible()
+      
+           self.view.window?.rootViewController = controller
+           self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+           
+    }
+    
+    func handleDonationButton(_ sender: Row) {
+       
+       let url = URL(string: "https://www.patreon.com/richaisabor")
+       let safariVC = SFSafariViewController(url: url!)
+       present(safariVC, animated: true, completion: nil)
+       
+       print("Donates")
+   }
+    
+    func shareButton(_ sender: Row) {
+
+        let name = URL(string: "https://www.google.com")
+        let vc = UIActivityViewController(activityItems: [name!], applicationActivities: nil)
+        vc.popoverPresentationController?.sourceView = self.view
+
+        self.present(vc, animated: true, completion: nil)
+    }
+
+    
+    private func showAlert(_ sender: Row) {
+      // ...
+    }
+
+    private func didToggleSelection() -> (Row) -> Void {
+        
+      return { [weak self] row in
+        // ...
+    }
 
 }
 
+
+    
+/*
 extension SettingsController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -262,4 +353,10 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
         
         print("report Crashes")
     }
+    
+*/
+
+
 }
+
+
