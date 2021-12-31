@@ -43,9 +43,10 @@ final class SettingsController: QuickTableViewController {
         print(url as Any)
         if let imageData: NSData = NSData(contentsOf:  url!) {
             image = UIImage(data: imageData as Data)
+            
         }
          
-        iv.image = image
+        iv.image = image?.circleMasked
         
         return iv
     }()
@@ -54,7 +55,7 @@ final class SettingsController: QuickTableViewController {
     static let defaultAge = 18
     var settingDelegate: SettingsControllerDelegate?
     var window: UIWindow?
-    //var tableContents:[Section]
+
     
     // MARK: - Init
     
@@ -88,7 +89,7 @@ final class SettingsController: QuickTableViewController {
 
     
     func configureUI() {
-        //configureTableView()
+
         
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -120,7 +121,7 @@ final class SettingsController: QuickTableViewController {
     
     func handleDonatePayPal(_ sender: Row) {
        
-       let url = URL(string: "https://www.patreon.com/richaisabor")
+       let url = URL(string: "https://paypal.me/richaisabor")
        let safariVC = SFSafariViewController(url: url!)
        present(safariVC, animated: true, completion: nil)
        
@@ -138,6 +139,26 @@ final class SettingsController: QuickTableViewController {
 
 
 
+}
+
+extension UIImage {
+    
+    var isPortrait:  Bool    { return size.height > size.width }
+    var isLandscape: Bool    { return size.width > size.height }
+    var breadth:     CGFloat { return min(size.width, size.height) }
+    var breadthSize: CGSize  { return CGSize(width: breadth, height: breadth) }
+    var breadthRect: CGRect  { return CGRect(origin: .zero, size: breadthSize) }
+    
+    var circleMasked: UIImage? {
+        UIGraphicsBeginImageContextWithOptions(breadthSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        guard let cgImage = cgImage?.cropping(to: CGRect(origin: CGPoint(x: isLandscape ? floor((size.width - size.height) / 2) : 0, y: isPortrait  ? floor((size.height - size.width) / 2) : 0), size: breadthSize)) else { return nil }
+        UIBezierPath(ovalIn: breadthRect).addClip()
+        UIImage(cgImage: cgImage, scale: 1, orientation: imageOrientation).draw(in: breadthRect)
+        
+        
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
 }
 
 
