@@ -22,7 +22,6 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
        
     var cardViewModels = [CardViewModel]()
     public var likedCards = [Product]()
-    var userInfoHeader: UserInfoHeader!
     
 
     override func viewDidLoad() {

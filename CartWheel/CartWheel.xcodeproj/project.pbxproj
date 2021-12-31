@@ -10,7 +10,6 @@
 		1D3151E226F7E5A700A03BC8 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3151E126F7E5A700A03BC8 /* FavoriteCell.swift */; };
 		1D68ACE2268DDF1B00EE62C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D68ACE1268DDF1B00EE62C8 /* User.swift */; };
 		1D6DCDA7273779A20092EA67 /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6DCDA6273779A20092EA67 /* TopNavigationStackView.swift */; };
-		1D889BA126E06F5600DB3AE8 /* UserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D889BA026E06F5600DB3AE8 /* UserInfoHeader.swift */; };
 		1D8EB95226ED4006005D8701 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8EB95126ED4006005D8701 /* SettingsSection.swift */; };
 		1DB9C2AA269797E400601EC0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2A9269797E400601EC0 /* LoginController.swift */; };
 		1DB9C2AC2697983900601EC0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9C2AB2697983900601EC0 /* LoginViewModel.swift */; };
@@ -45,7 +44,6 @@
 		1D486EF2274C7E6700A23843 /* CartWheel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CartWheel.entitlements; sourceTree = "<group>"; };
 		1D68ACE1268DDF1B00EE62C8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1D6DCDA6273779A20092EA67 /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
-		1D889BA026E06F5600DB3AE8 /* UserInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
 		1D8EB95126ED4006005D8701 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		1DB9C2A9269797E400601EC0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1DB9C2AB2697983900601EC0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				1DFB1B86268D138400126486 /* CardView.swift */,
 				1DB9C2B12697995E00601EC0 /* CustomTextField.swift */,
 				1DB9C2B92697A3B700601EC0 /* SettingsCell.swift */,
-				1D889BA026E06F5600DB3AE8 /* UserInfoHeader.swift */,
 				1D3151E126F7E5A700A03BC8 /* FavoriteCell.swift */,
 				1D6DCDA6273779A20092EA67 /* TopNavigationStackView.swift */,
 			);
@@ -340,7 +337,6 @@
 				1DB9C2AC2697983900601EC0 /* LoginViewModel.swift in Sources */,
 				1DFB1B8A268D142F00126486 /* SwipePhotosController.swift in Sources */,
 				1DFB1B99268D17E900126486 /* HomeController.swift in Sources */,
-				1D889BA126E06F5600DB3AE8 /* UserInfoHeader.swift in Sources */,
 				1DF92819268A434B004E9D4E /* SceneDelegate.swift in Sources */,
 				1DFB1B87268D138400126486 /* CardView.swift in Sources */,
 				1DFB1B97268D175C00126486 /* Product.swift in Sources */,

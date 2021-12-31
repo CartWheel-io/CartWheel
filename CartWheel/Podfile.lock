@@ -234,6 +234,9 @@ PODS:
   - Firebase/Firestore (8.2.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 8.2.0)
+  - Firebase/Messaging (8.2.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 8.2.0)
   - Firebase/Storage (8.2.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 8.2.0)
@@ -289,6 +292,13 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (~> 1.2)
+  - FirebaseMessaging (8.2.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/Reachability (~> 7.4)
+    - GoogleUtilities/UserDefaults (~> 7.4)
   - FirebaseStorage (8.2.0):
     - FirebaseCore (~> 8.0)
     - GTMSessionFetcher/Core (~> 1.5)
@@ -375,6 +385,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Firestore
+  - Firebase/Messaging
   - Firebase/Storage
   - JGProgressHUD
   - QuickTableViewController
@@ -393,6 +404,7 @@ SPEC REPOS:
     - FirebaseDatabase
     - FirebaseFirestore
     - FirebaseInstallations
+    - FirebaseMessaging
     - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -419,6 +431,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 9c231733363229ac26a55ee9ae9031e94cdb9a7d
   FirebaseFirestore: 844182d64f052a8177d1766d14332e3af4726f3c
   FirebaseInstallations: 9394ea09e242bf0816e95ac30e56a9214cc86ced
+  FirebaseMessaging: abe18570508ef84ab6957bba35871410457ed588
   FirebaseStorage: 001a1f6b1ec45ed60ff9689390d23988e4b95a61
   GoogleAppMeasurement: b52eafc9dff542d580700e708216568bd2fbf168
   GoogleDataTransport: 04c3e9a480bbcaa2ec3f5d27f1cdeb6a92f20c8d
@@ -434,6 +447,6 @@ SPEC CHECKSUMS:
   Realm: a2db54d9dcceddeba936b429f5b3d6610a109686
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: 910c053ca5e413ae0f9fc6528c06f2ca0b7d0332
+PODFILE CHECKSUM: ac21deae0b81ac4d90997f5e5807fb07f237db5b
 
 COCOAPODS: 1.10.1

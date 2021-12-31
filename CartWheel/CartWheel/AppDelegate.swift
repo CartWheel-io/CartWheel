@@ -8,9 +8,11 @@
 import UIKit
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseMessaging
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -19,9 +21,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [START default_firestore]
         FirebaseApp.configure()
+        
+        Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, _ in
+            guard success else {
+                return
+            }
+            
+            print("Success in APNS registry")
+            
+            
+            
+        }
+        
+        application.registerForRemoteNotifications()
  
         return true
     }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fromToken: String?) { messaging.token { token, _ in
+        guard let token = token else {
+            return
+        }
+        print("Token: \(token)")
+        
+    }
+        
+}
 
     // MARK: UISceneSession Lifecycle
 
