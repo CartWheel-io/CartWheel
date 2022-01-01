@@ -130,7 +130,7 @@ final class SettingsController: QuickTableViewController {
     
     func shareButton(_ sender: Row) {
 
-        let name = URL(string: "https://www.google.com")
+        let name = URL(string: "https://apps.apple.com/us/app/cartwheel-find-creative-goods/id1597029078")
         let vc = UIActivityViewController(activityItems: [name!], applicationActivities: nil)
         vc.popoverPresentationController?.sourceView = self.view
 

@@ -17,25 +17,12 @@ protocol LoginControllerDelegate {
 
 class LoginController: UIViewController {
     
-    
-    
-    @IBOutlet weak var vwUserDetail: UIView!
-    @IBOutlet weak var lblID: UILabel!
-    @IBOutlet weak var lblLabelFirst: UILabel!
-    @IBOutlet weak var lblFirstname: UILabel!
-    @IBOutlet weak var lblLabelLast: UILabel!
-    @IBOutlet weak var lblLastname: UILabel!
-    @IBOutlet weak var lblLabelEmail: UILabel!
-    @IBOutlet weak var lblEmail: UILabel!
-
-    
 
     var registrationDelegate: RegistrationControllerDelegate?
     var loginDelegate: LoginControllerDelegate?
     
     let fireImageView = UIImageView(image: #imageLiteral(resourceName: "login_icon-"))
     
-        
     
     let emailTextField: UITextField = {
         let textField = CustomTextField(padding: 22, height: 44)
@@ -78,12 +65,20 @@ class LoginController: UIViewController {
         return button
     }()
     
-    fileprivate let setupAppleSignInButton: ASAuthorizationAppleIDButton = {
-        let objASAuthorizationAppleIDButton = ASAuthorizationAppleIDButton(type: .default, style: .white)
-        objASAuthorizationAppleIDButton.frame = CGRect(x: 20, y: (UIScreen.main.bounds.size.height - 70), width: (UIScreen.main.bounds.size.width - 40), height: 50)
-        objASAuthorizationAppleIDButton.addTarget(self, action: #selector(actionHandleAppleSignin), for: .touchUpInside)
-        
-        return objASAuthorizationAppleIDButton
+    fileprivate let setupAppleSignInButton: UIButton = {
+     
+        let customAppleLoginBtn = UIButton()
+            customAppleLoginBtn.layer.borderWidth = 2.0
+            customAppleLoginBtn.backgroundColor = UIColor.white
+            customAppleLoginBtn.layer.borderColor = UIColor.black.cgColor
+            customAppleLoginBtn.setTitle("Sign in with Apple", for: .normal)
+            customAppleLoginBtn.setTitleColor(UIColor.black, for: .normal)
+            customAppleLoginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+            customAppleLoginBtn.setImage(UIImageView(image: #imageLiteral(resourceName: "apple_icon")).image, for: .normal)
+            customAppleLoginBtn.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 12)
+            customAppleLoginBtn.addTarget(self, action: #selector(actionHandleAppleSignin), for: .touchUpInside)
+      
+        return customAppleLoginBtn
         
     }()
     
@@ -162,14 +157,14 @@ class LoginController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-          
+        
+    
           setupGradientLayer()
           setupLayout()
           setupTapGesture()
           setupBindables()
         
-        //self.checkStatusOfAppleSignIn()
-        //self.vwUserDetail.isHidden = true
+       
     }
 
     
@@ -211,16 +206,6 @@ class LoginController: UIViewController {
     
     @objc func actionHandleAppleSignin()
     {
-        
-        DispatchQueue.main.async {
-                    
-                    self.vwUserDetail.isHidden = true
-                    
-                    self.lblID.text = ""
-                    self.lblFirstname.text = ""
-                    self.lblLastname.text = ""
-                    self.lblEmail.text = ""
-                }
                 
          let appleIDProvider = ASAuthorizationAppleIDProvider()
          
@@ -234,23 +219,6 @@ class LoginController: UIViewController {
     }
     
 
-    func checkStatusOfAppleSignIn()
-    {
-         let appleIDProvider = ASAuthorizationAppleIDProvider()
-         appleIDProvider.getCredentialState(forUserID: "\(UserDefaults.standard.value(forKey: "User_AppleID")!)") { (credentialState, error) in
-         
-         switch credentialState {
-         
-         case .authorized:
-            self.setupUserInfoAndOpenView()
-              break
-          
-          default:
-               break
-              }
-           }
-    }
-
     fileprivate func setupLayout() {
         
         navigationController?.isNavigationBarHidden = true
@@ -258,8 +226,7 @@ class LoginController: UIViewController {
         fireImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing:
         view.trailingAnchor, padding: .init(top: 150, left: 50, bottom: 0, right: -50))
     
-       
-        
+
         view.addSubview(verticalStackView)
         verticalStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing:
         view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: -50))
@@ -270,94 +237,27 @@ class LoginController: UIViewController {
         backToRegisterButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
     }
 }
-extension LoginController : ASAuthorizationControllerDelegate
-{
+extension LoginController : ASAuthorizationControllerDelegate {
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: Error){
+        print("failed!")
+    }
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization)
     {
         switch authorization.credential {
             
         case let credentials as ASAuthorizationAppleIDCredential:
-            DispatchQueue.main.async {
-                
-                if "\(credentials.user)" != "" {
-
-                    UserDefaults.standard.set("\(credentials.user)", forKey: "User_AppleID")
-                }
-                if credentials.email != nil {
-
-                    UserDefaults.standard.set("\(credentials.email!)", forKey: "User_Email")
-                }
-                if credentials.fullName!.givenName != nil {
-
-                    UserDefaults.standard.set("\(credentials.fullName!.givenName!)", forKey: "User_FirstName")
-                }
-                if credentials.fullName!.familyName != nil {
-
-                    UserDefaults.standard.set("\(credentials.fullName!.familyName!)", forKey: "User_LastName")
-                }
-                UserDefaults.standard.synchronize()
-                self.setupUserInfoAndOpenView()
-            }
+            let firstName = credentials.fullName?.givenName
+            let lastName = credentials.fullName?.familyName
+            let email = credentials.email
+            break
             
-        case let credentials as ASPasswordCredential:
-            DispatchQueue.main.async {
-            
-                if "\(credentials.user)" != "" {
-
-                    UserDefaults.standard.set("\(credentials.user)", forKey: "User_AppleID")
-                }
-                if "\(credentials.password)" != "" {
-
-                    UserDefaults.standard.set("\(credentials.password)", forKey: "User_Password")
-                }
-                UserDefaults.standard.synchronize()
-                self.setupUserInfoAndOpenView()
-            }
-            
-        default :
-            let alert: UIAlertController = UIAlertController(title: "Apple Sign In", message: "Something went wrong with your Apple Sign In!", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
+        default:
             break
         }
     }
-    
-    func setupUserInfoAndOpenView()
-    {
-        DispatchQueue.main.async {
-            
-            self.vwUserDetail.isHidden = false
-            
-            if "\(UserDefaults.standard.value(forKey: "User_FirstName")!)" != "" || "\(UserDefaults.standard.value(forKey: "User_LastName")!)" != "" || "\(UserDefaults.standard.value(forKey: "User_Email")!)" != "" {
-
-                self.lblID.text = "\(UserDefaults.standard.value(forKey: "User_AppleID")!)"
-                self.lblFirstname.text = "\(UserDefaults.standard.value(forKey: "User_FirstName")!)"
-                self.lblLastname.text = "\(UserDefaults.standard.value(forKey: "User_LastName")!)"
-                self.lblEmail.text = "\(UserDefaults.standard.value(forKey: "User_Email")!)"
-            } else {
-
-                self.lblID.text = "\(UserDefaults.standard.value(forKey: "User_AppleID")!)"
-                self.lblFirstname.text = "\(UserDefaults.standard.value(forKey: "User_Password")!)"
-                
-                self.lblLabelFirst.text = "Apple Password"
-                
-                self.lblLabelLast.isHidden = true
-                self.lblLabelEmail.isHidden = true
-            }
-            
-        }
-    }
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error)
-    {
-        let alert: UIAlertController = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
+ 
 }
 
 extension LoginController : ASAuthorizationControllerPresentationContextProviding
