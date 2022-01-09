@@ -148,7 +148,6 @@ class LoginController: UIViewController {
             passwordTextField,
             loginButton,
             setupAppleSignInButton
-       
             ])
         stacView.axis = .vertical
         stacView.spacing = 24

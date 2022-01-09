@@ -102,7 +102,7 @@ class FavoriteController: UITableViewController, UINavigationControllerDelegate 
             cell.textLabel?.adjustsFontSizeToFitWidth = true
             // Configure Table View Cell
             cell.textLabel?.text = item.name
-            let url = URL(string: item.imageURL1!)
+            let url = URL(string: item.imageURL3!)
             let data = try? Data(contentsOf: url!)
             cell.imageView!.image = UIImage(data: data!)
         

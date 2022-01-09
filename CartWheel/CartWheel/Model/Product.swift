@@ -14,7 +14,7 @@ struct Product: ProducesCardViewModel {
     var name: String?
     var pid: String?
     var url: String?
-    var price: String?
+    var price: Int?
     var size: String?
     var store: String?
     var description: String?
@@ -29,7 +29,7 @@ struct Product: ProducesCardViewModel {
         self.name = dictionary["name"] as? String ?? ""
         self.pid = dictionary["pid"] as? String
         self.url = dictionary["url"] as? String
-        self.price = dictionary["price"] as? String
+        self.price = dictionary["price"] as? Int
         self.description = dictionary["description"] as? String
         self.size = dictionary["size"] as? String
         self.store = dictionary["store"] as? String
@@ -46,7 +46,7 @@ struct Product: ProducesCardViewModel {
             self.name = snapshot.data()["name"] as? String
             self.pid = snapshot.data()["pid"] as? String
             self.url = snapshot.data()["url"] as? String
-            self.price = snapshot.data()["price"] as? String
+            self.price = snapshot.data()["price"] as? Int
             self.description = snapshot.data()["description"] as? String
             self.size = snapshot.data()["size"] as? String
             self.store = snapshot.data()["store"] as? String
@@ -66,16 +66,16 @@ struct Product: ProducesCardViewModel {
                          "store": store,
                          "imageURL1": imageURL1,
                          "imageURL2": imageURL2,
-                         "imageURL3": imageURL3]
+                         "imageURL3": imageURL3] as [String : Any]
         
-        return tempDict as [String : Any]
+        return tempDict
  
     }
     
     func toCardViewModel() -> CardViewModel {
         
        
-        let priceString = self.price
+        let priceString = String(self.price!)
         let urlString = self.url!
         let pidString = UUID().uuidString
         
@@ -86,7 +86,7 @@ struct Product: ProducesCardViewModel {
         let attributedName = NSMutableAttributedString(string: name ?? "", attributes: [.font: UIFont.systemFont(ofSize: 23, weight: .heavy)])
         
         
-        let attributedPrice = NSMutableAttributedString(string: price ?? "", attributes: [.font: UIFont.systemFont(ofSize: 23, weight: .heavy)])
+        let attributedPrice = NSMutableAttributedString(string: priceString , attributes: [.font: UIFont.systemFont(ofSize: 23, weight: .heavy)])
         
         let attributedDescription = NSMutableAttributedString(string: description ?? "", attributes: [.font: UIFont.systemFont(ofSize: 23, weight: .heavy)])
         
@@ -97,7 +97,7 @@ struct Product: ProducesCardViewModel {
         let attributedText = NSMutableAttributedString(string: name ?? "", attributes: [.font: UIFont.systemFont(ofSize: 43, weight: .regular)])
         
         
-        attributedText.append(NSAttributedString(string: "\n\n$\(priceString!)", attributes: [.font: UIFont.systemFont(ofSize: 30, weight: .heavy)]))
+        attributedText.append(NSAttributedString(string: "\n\n$\(priceString)", attributes: [.font: UIFont.systemFont(ofSize: 30, weight: .heavy)]))
         
         attributedText.append(NSAttributedString(string: "\n\(sizeString!)", attributes: [.font: UIFont.systemFont(ofSize: 30, weight: .regular)]))
         
