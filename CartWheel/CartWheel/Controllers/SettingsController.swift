@@ -41,7 +41,7 @@ final class SettingsController: QuickTableViewController {
         var url: URL?
         url = Auth.auth().currentUser?.photoURL
         print(url as Any)
-        if let imageData: NSData = NSData(contentsOf:  url!) {
+        if let imageData: NSData = NSData(contentsOf:  (url ?? URL(string: "https://archive.org/download/AnonymousUser/anonymousUser.jpg"))!) {
             image = UIImage(data: imageData as Data)
             
         }
@@ -65,7 +65,7 @@ final class SettingsController: QuickTableViewController {
     
         tableContents = [
              Section(title: "Profile", rows: [
-                NavigationRow(text: (Auth.auth().currentUser?.displayName)!,  detailText: .subtitle((Auth.auth().currentUser?.email)!), icon: .image(profileImageView.image!))
+                NavigationRow(text: (Auth.auth().currentUser?.displayName)! ,  detailText: .subtitle((Auth.auth().currentUser?.email)!), icon: .image(profileImageView.image!))
              ], footer: ""),
 
             
