@@ -14,7 +14,7 @@ struct Product: ProducesCardViewModel {
     var name: String?
     var pid: String?
     var url: String?
-    var price: Int?
+    var price: String?
     var size: String?
     var store: String?
     var description: String?
@@ -29,7 +29,7 @@ struct Product: ProducesCardViewModel {
         self.name = dictionary["name"] as? String ?? ""
         self.pid = dictionary["pid"] as? String
         self.url = dictionary["url"] as? String
-        self.price = dictionary["price"] as? Int
+        self.price = dictionary["price"] as? String
         self.description = dictionary["description"] as? String
         self.size = dictionary["size"] as? String
         self.store = dictionary["store"] as? String
@@ -46,7 +46,7 @@ struct Product: ProducesCardViewModel {
             self.name = snapshot.data()["name"] as? String
             self.pid = snapshot.data()["pid"] as? String
             self.url = snapshot.data()["url"] as? String
-            self.price = snapshot.data()["price"] as? Int
+            self.price = snapshot.data()["price"] as? String
             self.description = snapshot.data()["description"] as? String
             self.size = snapshot.data()["size"] as? String
             self.store = snapshot.data()["store"] as? String
@@ -75,7 +75,7 @@ struct Product: ProducesCardViewModel {
     func toCardViewModel() -> CardViewModel {
         
        
-        let priceString = String(self.price!)
+        let priceString = self.price!
         let urlString = self.url!
         let pidString = UUID().uuidString
         

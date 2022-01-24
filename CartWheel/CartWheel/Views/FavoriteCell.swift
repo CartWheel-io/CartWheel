@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import Foundation
 
 class FavoriteCell: UITableViewCell {
     
@@ -14,6 +15,10 @@ class FavoriteCell: UITableViewCell {
  
     static let cellID = "FavoriteCell"
     let radioURL = ""
+
+   
+
+    
     let buyNowButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
         button.setTitle("Buy Now", for: .normal)
@@ -33,11 +38,13 @@ class FavoriteCell: UITableViewCell {
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: .subtitle, reuseIdentifier: "reuseIdentifier")
+
         
         addSubview(buyNowButton)
       
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -58,6 +65,9 @@ class FavoriteCell: UITableViewCell {
     
     }
     
+    
+    
+
 }
 /*
 extension UIResponder {

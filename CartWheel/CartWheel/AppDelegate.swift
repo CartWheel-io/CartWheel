@@ -40,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
  
         return true
     }
+
+
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fromToken: String?) { messaging.token { token, _ in
         guard let token = token else {

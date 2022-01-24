@@ -299,12 +299,14 @@ class HomeController: UIViewController, SettingsControllerDelegate, CardViewDele
        @objc func handleLikeButton() {
            saveSwipeToFirestore(didLike: 1)
            performSwipeAnimation(translation: 700, angle: 15)
+           print("Like")
 
        }
        
        @objc func handleDislikeButton() {
            
            performSwipeAnimation(translation: -700, angle: -10)
+           print("Dislike")
            
        }
     
