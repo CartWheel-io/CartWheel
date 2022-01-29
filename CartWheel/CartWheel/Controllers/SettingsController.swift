@@ -65,7 +65,7 @@ final class SettingsController: QuickTableViewController {
     
         tableContents = [
              Section(title: "Profile", rows: [
-                NavigationRow(text: (Auth.auth().currentUser?.displayName)! ,  detailText: .subtitle((Auth.auth().currentUser?.email)!), icon: .image(profileImageView.image!))
+                NavigationRow(text: (Auth.auth().currentUser?.displayName)!,  detailText: .subtitle((Auth.auth().currentUser?.email)!), icon: .image(profileImageView.image!))
              ], footer: ""),
 
             

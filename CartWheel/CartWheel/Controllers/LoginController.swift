@@ -12,6 +12,7 @@ import FirebaseAuth
 import AuthenticationServices
 import Foundation
 import CryptoKit
+import Firebase
 
 protocol LoginControllerDelegate {
     func didFinishLoggingIn()
@@ -319,6 +320,11 @@ extension LoginController : ASAuthorizationControllerDelegate {
           let credential = OAuthProvider.credential(withProviderID: "apple.com",
                                                     idToken: idTokenString,
                                                     rawNonce: nonce)
+        
+          let pncf = PersonNameComponentsFormatter()
+          let uid = Auth.auth().currentUser?.uid ?? ""
+          let email = Auth.auth().currentUser?.email ?? ""
+          
             
             
           // Sign in with Firebase.
@@ -334,14 +340,34 @@ extension LoginController : ASAuthorizationControllerDelegate {
             // ...
             // Make a request to set user's display name on Firebase
             let changeRequest = authResult?.user.createProfileChangeRequest()
-            changeRequest?.displayName = appleIDCredential.fullName?.givenName ?? "Anonymous User"
-            //print(appleIDCredential.fullName?.givenName)
+            changeRequest?.displayName = pncf.string(for: appleIDCredential.fullName) ?? "Anonymous User"
+            print(pncf.string(for: appleIDCredential.fullName) ?? "Anonymous User" )
             changeRequest?.commitChanges(completion: { (error) in
 
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
-                    print("Updated display name: \(Auth.auth().currentUser?.displayName)!")
+                    print("Updated display name: \((Auth.auth().currentUser?.displayName)!)")
+                    
+                    /*let documentData: [String: Any] = [
+                        "fullName": (Auth.auth().currentUser?.displayName)! ,
+                                            "uid": uid,
+                                            "imageUrl1":  "https://archive.org/download/AnonymousUser/anonymousUser.jpg",
+                                            "email": email,
+                                            ]
+                    
+                    Firestore.firestore().collection("users").document(uid).setData(documentData) { (error) in
+                                            
+                                            if let error = error {
+                                                
+                                                print(error)
+                                                return
+                                            }
+                        
+                                        
+                                    }
+                            */
+
                 }
             })
             
