@@ -321,10 +321,10 @@ extension LoginController : ASAuthorizationControllerDelegate {
                                                     idToken: idTokenString,
                                                     rawNonce: nonce)
         
-          let pncf = PersonNameComponentsFormatter()
-          let uid = Auth.auth().currentUser?.uid ?? ""
-          let email = Auth.auth().currentUser?.email ?? ""
           
+          
+            
+         
             
             
           // Sign in with Firebase.
@@ -339,9 +339,24 @@ extension LoginController : ASAuthorizationControllerDelegate {
             // User is signed in to Firebase with Apple.
             // ...
             // Make a request to set user's display name on Firebase
+            let pncf = PersonNameComponentsFormatter()
+            let uid = Auth.auth().currentUser?.uid ?? ""
+            let email = Auth.auth().currentUser?.email ?? ""
+      
             let changeRequest = authResult?.user.createProfileChangeRequest()
             changeRequest?.displayName = pncf.string(for: appleIDCredential.fullName) ?? "Anonymous User"
-            print(pncf.string(for: appleIDCredential.fullName) ?? "Anonymous User" )
+            //print(pncf.string(for: appleIDCredential.fullName) ?? "Anonymous User" )
+            let displayName = Auth.auth().currentUser?.displayName ?? "Anonymous User"
+            
+            let documentData: [String: Any] = [
+                                      "fullName": displayName,
+                                      "uid": uid,
+                                      "imageUrl1":  "https://archive.org/download/AnonymousUser/anonymousUser.jpg",
+                                      "email": email,
+                                      ]
+            
+            
+            
             changeRequest?.commitChanges(completion: { (error) in
 
                 if let error = error {
@@ -349,12 +364,7 @@ extension LoginController : ASAuthorizationControllerDelegate {
                 } else {
                     print("Updated display name: \((Auth.auth().currentUser?.displayName)!)")
                     
-                    /*let documentData: [String: Any] = [
-                        "fullName": (Auth.auth().currentUser?.displayName)! ,
-                                            "uid": uid,
-                                            "imageUrl1":  "https://archive.org/download/AnonymousUser/anonymousUser.jpg",
-                                            "email": email,
-                                            ]
+                   
                     
                     Firestore.firestore().collection("users").document(uid).setData(documentData) { (error) in
                                             
@@ -366,7 +376,7 @@ extension LoginController : ASAuthorizationControllerDelegate {
                         
                                         
                                     }
-                            */
+                            
 
                 }
             })
